@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class NButton extends StatelessWidget {
   // 类型
@@ -76,33 +76,32 @@ class NButton extends StatelessWidget {
       this.padding,
       this.borderRadius,
       this.onClick})
-      : assert(["mini", "small", "normal", "large"].indexOf(size) > -1,
+      : assert(["mini", "small", "normal", "large"].contains(size),
             "size must be mini, small, normal, or large"),
         assert(
-            ["default", "primary", "info", "danger", "warning"].indexOf(type) >
-                -1,
+            ["default", "primary", "info", "danger", "warning"].contains(type),
             "type must be default, primary, info, danger or warning"),
         super(key: key);
 
   final Map<String, dynamic> sizes = {
     "mini": <String, dynamic>{
       "fontSize": Style.buttonMiniFontSize,
-      "padding": EdgeInsets.symmetric(horizontal: 2),
+      "padding": const EdgeInsets.symmetric(horizontal: 2),
       "height": Style.buttonMiniHeight
     },
     "small": <String, dynamic>{
       "fontSize": Style.buttonSmallFontSize,
-      "padding": EdgeInsets.symmetric(horizontal: 8),
+      "padding": const EdgeInsets.symmetric(horizontal: 8),
       "height": Style.buttonSmallHeight
     },
     "normal": <String, dynamic>{
       "fontSize": Style.buttonDefaultFontSize,
-      "padding": EdgeInsets.symmetric(horizontal: 15),
+      "padding": const EdgeInsets.symmetric(horizontal: 15),
       "height": Style.buttonDefaultHeight
     },
     "large": <String, dynamic>{
       "fontSize": Style.buttonLargeFontSize,
-      "padding": EdgeInsets.symmetric(horizontal: 24),
+      "padding": const EdgeInsets.symmetric(horizontal: 24),
       "height": Style.buttonLargeHeight
     },
   };
@@ -150,7 +149,7 @@ class NButton extends StatelessWidget {
                 : colors[type]["textColor"])));
 
     return Container(
-      width: width ?? null,
+      width: width,
       height: height ?? sizes[size]["height"],
       padding: padding ?? sizes[size]["padding"],
       child: Row(
@@ -167,9 +166,9 @@ class NButton extends StatelessWidget {
                     strokeWidth: Style.borderWidthBase,
                   ),
                 )
-              : (icon != null ? icon : Container()) ?? Container(),
+              : (icon ?? Container()),
           (loading || icon != null) && text != null
-              ? SizedBox(width: Style.intervalSm)
+              ? const SizedBox(width: Style.intervalSm)
               : Container(),
           text != null
               ? Text(text!,
@@ -198,7 +197,7 @@ class NButton extends StatelessWidget {
       opacity: disabled ? Style.buttonDisabledOpacity : 1.0,
       child: DecoratedBox(
           decoration: BoxDecoration(
-              color: buttonColor ?? null,
+              color: buttonColor,
               gradient: color is Gradient ? color : null,
               border: color is Gradient
                   ? null

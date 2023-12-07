@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/checkbox.dart';
-import 'package:vant_flutter/widgets/cell.dart';
-import 'package:vant_flutter/widgets/cell_group.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/checkbox.dart';
+import 'package:vant_widget/widgets/cell.dart';
+import 'package:vant_widget/widgets/cell_group.dart';
 
 class RadioGroup extends StatefulWidget {
   // 选中项的标识符
@@ -24,7 +24,7 @@ class RadioGroup extends StatefulWidget {
   // 当绑定值变化时触发的事件
   final Function(String? val)? onChange;
 
-  RadioGroup(
+  const RadioGroup(
       {Key? key,
       this.shape,
       this.value,
@@ -83,12 +83,13 @@ class _RadioGroup extends State<RadioGroup> {
             )
           : checkbox);
       if (i < widget.list!.length - 1 && !widget.inCellGroup) {
-        widgets.add(SizedBox(height: Style.intervalLg));
+        widgets.add(const SizedBox(height: Style.intervalLg));
       }
     }
     return widgets;
   }
 
+  @override
   Widget build(BuildContext context) {
     return widget.inCellGroup
         ? CellGroup(

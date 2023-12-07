@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/field.dart';
-import 'package:vant_flutter/widgets/button.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/field.dart';
+import 'package:vant_widget/widgets/button.dart';
 
 class Coupon {
   // 当前选中优惠券的索引
@@ -69,17 +69,17 @@ class Coupon {
 class CouponState extends StatefulWidget {
   final Coupon coupon;
 
-  const CouponState(this.coupon);
+  const CouponState(this.coupon, {super.key});
 
   @override
-  _CouponState createState() => _CouponState();
+  State<CouponState> createState() => _CouponState();
 }
 
 class _CouponState extends State<CouponState>
     with SingleTickerProviderStateMixin {
   TextEditingController searchInput = TextEditingController();
   TabController? _tabController;
-  ScrollController _scrollController = new ScrollController();
+  final ScrollController _scrollController = ScrollController();
   int? _chosenCoupon;
   late List<CouponItem> _coupons;
   late List<CouponItem> _disabledCoupons;
@@ -89,11 +89,11 @@ class _CouponState extends State<CouponState>
   void initState() {
     _tabController = TabController(vsync: this, length: 2);
     couponWidget = widget.coupon;
-    print(couponWidget);
+    // print(couponWidget);
     _coupons = couponWidget!.coupons ?? [];
     _disabledCoupons = couponWidget!.disabledCoupons ?? [];
     _chosenCoupon = couponWidget!.chosenCoupon;
-    WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
     super.initState();
   }
 
@@ -137,8 +137,9 @@ class _CouponState extends State<CouponState>
             couponWidget!.exchangeButtonDisabled || searchInput.text == '',
         width: Style.couponListExchangeButtonWidth,
         onClick: () {
-          if (couponWidget!.onExchange != null)
+          if (couponWidget!.onExchange != null) {
             couponWidget!.onExchange!(searchInput.text);
+          }
         },
       ),
     );
@@ -149,8 +150,8 @@ class _CouponState extends State<CouponState>
       children: <Widget>[
         Image.network("https://img.yzcdn.cn/vant/coupon-empty.png",
             width: Style.couponListEmptyImageSize),
-        SizedBox(width: Style.paddingSm),
-        Text("暂无优惠券",
+        const SizedBox(width: Style.paddingSm),
+        const Text("暂无优惠券",
             style: TextStyle(
                 color: Style.couponListEmptyTipColor,
                 fontSize: Style.couponListEmptyTipFontSize))
@@ -160,7 +161,7 @@ class _CouponState extends State<CouponState>
 
   Widget buildTabBar() {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Style.couponListTabBackground,
           border: Border(
               top: BorderSide(
@@ -180,29 +181,29 @@ class _CouponState extends State<CouponState>
   }
 
   Widget buildCouponContainerLeft(CouponItem coupon, int i, bool disabled) {
-    return Container(
+    return SizedBox(
       width: Style.couponHeadWidth,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(bottom: Style.intervalSm),
+            margin: const EdgeInsets.only(bottom: Style.intervalSm),
             height: Style.couponHeadHeight,
             child: Row(
               textBaseline: TextBaseline.ideographic,
               crossAxisAlignment: CrossAxisAlignment.baseline,
               children: <Widget>[
-                Text("${coupon.valueDesc ?? ''}",
+                Text(coupon.valueDesc ?? '',
                     style: TextStyle(
                         fontSize: Style.couponNameFontSize,
                         fontWeight: Style.fontWeightBold,
                         color: disabled
                             ? Style.couponDisabledTextColor
                             : Style.couponAmountColor)),
-                SizedBox(
+                const SizedBox(
                   width: Style.intervalSm,
                 ),
-                Text("${coupon.unitDesc ?? ''}",
+                Text(coupon.unitDesc ?? '',
                     style: TextStyle(
                         fontSize: Style.couponFontSize,
                         fontWeight: Style.fontWeightBold,
@@ -212,8 +213,8 @@ class _CouponState extends State<CouponState>
               ],
             ),
           ),
-          Text("${coupon.condition ?? ''}",
-              style: TextStyle(
+          Text(coupon.condition ?? '',
+              style: const TextStyle(
                   fontSize: Style.couponFontSize, color: Style.couponColor))
         ],
       ),
@@ -227,12 +228,12 @@ class _CouponState extends State<CouponState>
         children: <Widget>[
           Container(
             height: Style.couponHeadHeight,
-            margin: EdgeInsets.only(bottom: Style.intervalSm),
+            margin: const EdgeInsets.only(bottom: Style.intervalSm),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                Text("${coupon.name ?? ''}",
+                Text(coupon.name ?? '',
                     style: TextStyle(
                         fontWeight: Style.fontWeightBold,
                         color: disabled
@@ -250,7 +251,7 @@ class _CouponState extends State<CouponState>
             ),
           ),
           Text("有效期：${coupon.startAt ?? 'null'} - ${coupon.endAt ?? 'null'}",
-              style: TextStyle(
+              style: const TextStyle(
                   color: Style.couponColor, fontSize: Style.couponFontSize))
         ],
       ),
@@ -273,14 +274,14 @@ class _CouponState extends State<CouponState>
   Widget buildDescription(CouponItem coupon, int i, bool disabled) {
     return Container(
       alignment: AlignmentDirectional.centerStart,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           border: Border(
               top: BorderSide(
                   width: Style.borderWidthBase, color: Style.borderColor)),
           color: Style.couponDescriptionBackgroundColor),
       padding: Style.couponDescriptionPadding,
       child: Text("${disabled ? coupon.reason : coupon.description}",
-          style: TextStyle(
+          style: const TextStyle(
               color: Style.couponDescriptionColor,
               fontSize: Style.couponDescriptionFontSize)),
     );
@@ -294,13 +295,13 @@ class _CouponState extends State<CouponState>
           border: Border.all(
               width: Style.borderWidthBase, color: Style.borderColor),
           color: Style.couponBackgroundColor,
-          boxShadow: [Style.couponBoxShadow]),
+          boxShadow: const [Style.couponBoxShadow]),
       margin: Style.couponMargin,
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           DecoratedBox(
-            decoration: BoxDecoration(color: Style.couponBackgroundColor),
+            decoration: const BoxDecoration(color: Style.couponBackgroundColor),
             child: Material(
               type: MaterialType.transparency,
               child: InkWell(
@@ -320,8 +321,9 @@ class _CouponState extends State<CouponState>
                     setState(() {
                       if (disabled) return;
                       _chosenCoupon = i;
-                      if (couponWidget!.onSelect != null)
+                      if (couponWidget!.onSelect != null) {
                         couponWidget!.onSelect!(i);
+                      }
                       Navigator.of(context).pop();
                     });
                   },
@@ -337,7 +339,7 @@ class _CouponState extends State<CouponState>
   }
 
   Widget buildCoupons() {
-    return _coupons.length == 0
+    return _coupons.isEmpty
         ? buildEmptyList()
         : ListView.builder(
             padding: Style.couponListPadding,
@@ -349,7 +351,7 @@ class _CouponState extends State<CouponState>
   }
 
   Widget buildDisabledCoupons() {
-    return _disabledCoupons.length == 0
+    return _disabledCoupons.isEmpty
         ? buildEmptyList()
         : ListView.builder(
             padding: Style.couponListPadding,
@@ -376,7 +378,7 @@ class _CouponState extends State<CouponState>
 
   Widget buildBottomSheet() {
     return DecoratedBox(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Style.couponListCloseButtonBackground,
           border: Border(
               top: BorderSide(
@@ -391,7 +393,7 @@ class _CouponState extends State<CouponState>
             height: Style.couponListCloseButtonHeight,
             alignment: AlignmentDirectional.center,
             child: Text(couponWidget!.closeButtonText,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: Style.couponListCloseButtonFontSize,
                     color: Style.couponListCloseButtonColor,
                     fontWeight: Style.fontWeightBold)),

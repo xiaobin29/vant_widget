@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/collapse_item.dart';
-import 'package:vant_flutter/widgets/divider.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/collapse_item.dart';
+import 'package:vant_widget/widgets/divider.dart';
 
 class Collapse extends StatefulWidget {
   // 当前展开面板的 name
@@ -15,7 +15,7 @@ class Collapse extends StatefulWidget {
   // 切换面板时触发
   final Function(List<String>?)? onChange;
 
-  Collapse(
+  const Collapse(
       {Key? key,
       this.name,
       required this.list,
@@ -25,7 +25,7 @@ class Collapse extends StatefulWidget {
       : super(key: key);
 
   @override
-  _Collapse createState() => _Collapse();
+  State<Collapse> createState() => _Collapse();
 }
 
 class _Collapse extends State<Collapse> {
@@ -53,7 +53,6 @@ class _Collapse extends State<Collapse> {
         clickable: item.clickable,
         isExpanded: _name!.contains(name),
         content: item.content,
-        child: item.child,
         rightIcon: item.rightIcon,
         onExpansionChanged: (val) {
           setState(() {
@@ -62,8 +61,9 @@ class _Collapse extends State<Collapse> {
           });
           if (widget.onChange != null) widget.onChange!(_name);
         },
+        child: item.child,
       ));
-      if (i < widget.list.length - 1) widgets.add(NDivider());
+      if (i < widget.list.length - 1) widgets.add(const NDivider());
     }
     return widgets;
   }

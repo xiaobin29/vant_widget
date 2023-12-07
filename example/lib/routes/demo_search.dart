@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoSearch extends StatefulWidget {
+  const DemoSearch({super.key});
+
   @override
   _DemoSearch createState() => _DemoSearch();
 }
@@ -14,8 +16,8 @@ class _DemoSearch extends State<DemoSearch> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 30, 0, 10),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(20, 30, 0, 10),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -26,7 +28,7 @@ class _DemoSearch extends State<DemoSearch> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
           title(AppLocalizations.of(context)!.basic_usage),
-          Search(),
+          const Search(),
           title(AppLocalizations.of(context)!.event_monitor),
           Search(
             showAction: true,
@@ -40,7 +42,7 @@ class _DemoSearch extends State<DemoSearch> {
           title(AppLocalizations.of(context)!.custom_style),
           Search(
             shape: "round",
-            background: Color(0xfff2f3DA),
+            background: const Color(0xfff2f3DA),
             showAction: true,
             maxLength: 16,
             placeholder: AppLocalizations.of(context)!.placeholder_input,
@@ -51,7 +53,7 @@ class _DemoSearch extends State<DemoSearch> {
             left: Row(
               children: <Widget>[
                 Text(AppLocalizations.of(context)!.address),
-                SizedBox(width: 6),
+                const SizedBox(width: 6),
                 GestureDetector(
                   child: Icon(_icon, color: _color, size: 18),
                   onTap: () {
@@ -75,7 +77,7 @@ class _DemoSearch extends State<DemoSearch> {
                   },
                   child: Text(AppLocalizations.of(context)!.search),
                 ),
-                SizedBox(width: 4),
+                const SizedBox(width: 4),
                 Text(AppLocalizations.of(context)!.collect)
               ],
             ),

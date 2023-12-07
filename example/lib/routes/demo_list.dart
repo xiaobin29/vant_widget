@@ -2,17 +2,19 @@ import 'dart:async';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoList extends StatefulWidget {
+  const DemoList({super.key});
+
   @override
   _DemoList createState() => _DemoList();
 }
 
 class _DemoList extends State<DemoList> with SingleTickerProviderStateMixin {
   TabController? _tabController;
-  List<int> _dataList1 = [];
-  List<int> _dataList2 = [];
+  final List<int> _dataList1 = [];
+  final List<int> _dataList2 = [];
   bool _finished1 = false;
   bool _finished2 = false;
   bool _error = false;
@@ -20,7 +22,7 @@ class _DemoList extends State<DemoList> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync: this, length: 2);
+    _tabController = TabController(vsync: this, length: 2);
   }
 
   Widget _buildItem(int i) {
@@ -69,7 +71,7 @@ class _DemoList extends State<DemoList> with SingleTickerProviderStateMixin {
             child: List.generate(
                 _dataList2.length, (i) => _buildItem(_dataList2[i])),
             onLoad: () {
-              if (_dataList2.length != 0) {
+              if (_dataList2.isNotEmpty) {
                 setState(() {
                   _error = _dataList2.length == 10 && !_error;
                 });

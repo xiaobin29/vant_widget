@@ -1,33 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/divider.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/divider.dart';
 
 class Steps extends StatefulWidget {
   // 所有步骤
   final List<StepItem> steps;
+
   // 当前步骤
   final int active;
+
   // 显示方向，可选值为 vertical
   final String direction;
+
   // 激活状态颜色
   final Color activeColor;
+
   // 激活状态图标
   final IconData activeIcon;
+
   // 未激活状态图标
   final IconData? inactiveIcon;
 
-  Steps(
-      {Key? key,
-      required this.steps,
-      this.active = 0,
-      this.direction = 'horizontal',
-      this.activeColor = Style.stepFinishLineColor,
-      this.activeIcon = Icons.check_circle,
-      this.inactiveIcon})
-      : assert(steps.length > 0, '步骤数量必须大于零');
+  const Steps({
+    Key? key,
+    required this.steps,
+    this.active = 0,
+    this.direction = 'horizontal',
+    this.activeColor = Style.stepFinishLineColor,
+    this.activeIcon = Icons.check_circle,
+    this.inactiveIcon,
+  }) : assert(steps.length > 0, '步骤数量必须大于零');
 
   @override
-  _Steps createState() => _Steps();
+  State<Steps> createState() => _Steps();
 }
 
 class _Steps extends State<Steps> {
@@ -38,7 +43,7 @@ class _Steps extends State<Steps> {
 
   Widget buildHorizontalTop(StepItem step, int i) {
     return Container(
-      margin: EdgeInsets.only(bottom: Style.paddingXs),
+      margin: const EdgeInsets.only(bottom: Style.paddingXs),
       child: Text(step.title,
           style: TextStyle(
               fontSize: Style.stepHorizontalTitleFontSize,
@@ -54,10 +59,10 @@ class _Steps extends State<Steps> {
     return Container(
       alignment: AlignmentDirectional.centerStart,
       margin: i == 0
-          ? EdgeInsets.only(right: Style.paddingSm)
+          ? const EdgeInsets.only(right: Style.paddingSm)
           : i == widget.steps.length - 1
-              ? EdgeInsets.only(left: Style.paddingSm)
-              : EdgeInsets.symmetric(horizontal: Style.paddingSm),
+              ? const EdgeInsets.only(left: Style.paddingSm)
+              : const EdgeInsets.symmetric(horizontal: Style.paddingSm),
       child: i == widget.active
           ? Icon(
               widget.activeIcon,
@@ -81,13 +86,14 @@ class _Steps extends State<Steps> {
       StepItem step = widget.steps[i];
       tops.add(buildHorizontalTop(step, i));
       bottoms.add(buildHorizontalBottom(step, i));
-      if (i < widget.steps.length - 1)
+      if (i < widget.steps.length - 1) {
         bottoms.add(Expanded(
           child: NDivider(
             lineColor:
                 i < widget.active ? widget.activeColor : Style.stepLineColor,
           ),
         ));
+      }
     }
     return [
       Row(
@@ -102,7 +108,7 @@ class _Steps extends State<Steps> {
   }
 
   Widget buildVerticalLeft(StepItem step, int i) {
-    return Container(
+    return SizedBox(
       width: Style.stepVerticalProgressWidth,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -110,7 +116,7 @@ class _Steps extends State<Steps> {
         children: <Widget>[
           Container(
             alignment: AlignmentDirectional.center,
-            margin: EdgeInsets.symmetric(vertical: Style.paddingXs),
+            margin: const EdgeInsets.symmetric(vertical: Style.paddingXs),
             child: (i == widget.active)
                 ? Icon(
                     widget.activeIcon,
@@ -141,13 +147,13 @@ class _Steps extends State<Steps> {
 
   Widget buildVerticalRight(StepItem step, int i) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Style.paddingXs),
+      margin: const EdgeInsets.symmetric(horizontal: Style.paddingXs),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-              padding: EdgeInsets.symmetric(vertical: Style.paddingSm),
+              padding: const EdgeInsets.symmetric(vertical: Style.paddingSm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -169,7 +175,7 @@ class _Steps extends State<Steps> {
                                   : Style.stepTextColor)),
                 ],
               )),
-          (i < widget.steps.length - 1) ? NDivider() : Container()
+          (i < widget.steps.length - 1) ? const NDivider() : Container()
         ],
       ),
     );
@@ -185,7 +191,7 @@ class _Steps extends State<Steps> {
     }
     return [
       Container(
-        padding: EdgeInsets.symmetric(vertical: Style.paddingXs),
+        padding: const EdgeInsets.symmetric(vertical: Style.paddingXs),
         child: Column(children: left),
       ),
       Expanded(
@@ -200,7 +206,7 @@ class _Steps extends State<Steps> {
   Widget build(BuildContext context) {
     return Container(
       padding: Style.stepsPadding,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(
               width: Style.stepsBorderWidth, color: Style.stepsBorderColor),

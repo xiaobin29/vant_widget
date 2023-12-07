@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoRate extends StatefulWidget {
+  const DemoRate({super.key});
+
   @override
   _DemoRate createState() => _DemoRate();
 }
@@ -11,20 +13,20 @@ class DemoRate extends StatefulWidget {
 class _DemoRate extends State<DemoRate> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               title(AppLocalizations.of(context)!.basic_usage),
-              Rate(
+              const Rate(
                 value: 3,
               ),
               title(AppLocalizations.of(context)!.custom_icon),
@@ -48,14 +50,14 @@ class _DemoRate extends State<DemoRate> {
                 },
               ),
               title(AppLocalizations.of(context)!.custom_number),
-              Rate(
+              const Rate(
                 count: 7,
                 value: 4,
               ),
               title(AppLocalizations.of(context)!.disabled_status),
-              Rate(value: 3, disabled: true),
+              const Rate(value: 3, disabled: true),
               title(AppLocalizations.of(context)!.readonly_status),
-              Rate(value: 3, readonly: true)
+              const Rate(value: 3, readonly: true)
             ]));
   }
 }

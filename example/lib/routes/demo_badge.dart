@@ -1,8 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoBadge extends StatefulWidget {
+  const DemoBadge({super.key});
+
   @override
   _DemoBadge createState() => _DemoBadge();
 }
@@ -10,8 +12,8 @@ class DemoBadge extends StatefulWidget {
 class _DemoBadge extends State<DemoBadge> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -19,7 +21,7 @@ class _DemoBadge extends State<DemoBadge> {
     return Container(
       width: 40,
       height: 40,
-      decoration: BoxDecoration(color: Color(0xffdcdee0)),
+      decoration: const BoxDecoration(color: Color(0xffdcdee0)),
     );
   }
 
@@ -72,7 +74,7 @@ class _DemoBadge extends State<DemoBadge> {
             children: <Widget>[
               NBadge(
                 value: "5",
-                color: Color(0xff1989fa),
+                color: const Color(0xff1989fa),
                 child: testWidget(),
               ),
               NBadge(
@@ -83,7 +85,7 @@ class _DemoBadge extends State<DemoBadge> {
               ),
               NBadge(
                 dot: true,
-                color: Color(0xff1989fa),
+                color: const Color(0xff1989fa),
                 child: testWidget(),
               ),
             ],
@@ -93,10 +95,10 @@ class _DemoBadge extends State<DemoBadge> {
             spacing: 16.0,
             children: <Widget>[
               NBadge(
-                  content: Icon(Icons.add, size: 12.0, color: Colors.white),
+                  content: const Icon(Icons.add, size: 12.0, color: Colors.white),
                   child: testWidget()),
               NBadge(
-                  content: Icon(Icons.close, size: 12.0, color: Colors.white),
+                  content: const Icon(Icons.close, size: 12.0, color: Colors.white),
                   child: testWidget())
             ],
           )

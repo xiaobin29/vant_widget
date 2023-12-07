@@ -1,10 +1,12 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 import '../utils/index.dart';
 
 class DemoContactCard extends StatefulWidget {
+  const DemoContactCard({super.key});
+
   @override
   _DemoContactCard createState() => _DemoContactCard();
 }
@@ -12,11 +14,12 @@ class DemoContactCard extends StatefulWidget {
 class _DemoContactCard extends State<DemoContactCard> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(

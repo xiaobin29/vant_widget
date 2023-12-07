@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/checkbox.dart';
-import 'package:vant_flutter/widgets/cell.dart';
-import 'package:vant_flutter/widgets/cell_group.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/checkbox.dart';
+import 'package:vant_widget/widgets/cell.dart';
+import 'package:vant_widget/widgets/cell_group.dart';
 
 class CheckboxGroup extends StatefulWidget {
   // 所有选项
@@ -24,7 +24,7 @@ class CheckboxGroup extends StatefulWidget {
   // 当绑定值变化时触发的事件
   final Function(List<String?>? value)? onChange;
 
-  CheckboxGroup(
+  const CheckboxGroup(
       {Key? key,
       this.values,
       this.shape,
@@ -81,7 +81,7 @@ class _CheckboxGroup extends State<CheckboxGroup> {
               title: item.text,
               clickable: true,
               onClick: () {
-                if (_values!.indexOf(item.name) < 0 &&
+                if (!_values!.contains(item.name) &&
                     _values!.length < widget.max) {
                   setState(() {
                     _values!.add(item.name);
@@ -96,7 +96,7 @@ class _CheckboxGroup extends State<CheckboxGroup> {
             )
           : checkbox);
       if (i < widget.list!.length - 1 && !widget.inCellGroup) {
-        widgets.add(SizedBox(height: Style.intervalLg));
+        widgets.add(const SizedBox(height: Style.intervalLg));
       }
     }
     return widgets;

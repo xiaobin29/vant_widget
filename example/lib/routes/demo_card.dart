@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoCard extends StatefulWidget {
+  const DemoCard({super.key});
+
   @override
   _DemoCard createState() => _DemoCard();
 }
@@ -11,8 +13,8 @@ class DemoCard extends StatefulWidget {
 class _DemoCard extends State<DemoCard> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -45,10 +47,10 @@ class _DemoCard extends State<DemoCard> {
           title(AppLocalizations.of(context)!.custom_content),
           NCard(
             customTitle: Text(AppLocalizations.of(context)!.product_name,
-                style: TextStyle(fontSize: 16, color: Colors.blueAccent)),
+                style: const TextStyle(fontSize: 16, color: Colors.blueAccent)),
             desc: AppLocalizations.of(context)!.description,
             num: 2,
-            customPrice: Price(
+            customPrice: const Price(
               value: 2.0,
               color: Colors.red,
             ),
@@ -60,7 +62,7 @@ class _DemoCard extends State<DemoCard> {
               ],
             ),
             customFooter: Padding(
-              padding: EdgeInsets.only(top: 6),
+              padding: const EdgeInsets.only(top: 6),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
@@ -68,14 +70,14 @@ class _DemoCard extends State<DemoCard> {
                     text: AppLocalizations.of(context)!.button,
                     round: true,
                     size: "mini",
-                    padding: EdgeInsets.symmetric(vertical: 3, horizontal: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),
                   ),
-                  SizedBox(width: 6),
+                  const SizedBox(width: 6),
                   NButton(
                     text: AppLocalizations.of(context)!.button,
                     round: true,
                     size: "mini",
-                    padding: EdgeInsets.symmetric(vertical: 3, horizontal: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),
                   ),
                 ],
               ),

@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoAddressEdit extends StatefulWidget {
+  const DemoAddressEdit({super.key});
+
   @override
   _DemoAddressEdit createState() => _DemoAddressEdit();
 }
@@ -13,8 +15,8 @@ class _DemoAddressEdit extends State<DemoAddressEdit> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 

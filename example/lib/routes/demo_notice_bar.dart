@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoNoticeBar extends StatefulWidget {
+  const DemoNoticeBar({super.key});
+
   @override
   _DemoNoticeBar createState() => _DemoNoticeBar();
 }
@@ -11,8 +13,8 @@ class DemoNoticeBar extends StatefulWidget {
 class _DemoNoticeBar extends State<DemoNoticeBar> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(16, 30, 0, 10),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(16, 30, 0, 10),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -45,7 +47,7 @@ class _DemoNoticeBar extends State<DemoNoticeBar> {
             Utils.toast("NoticeBar closed");
           },
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         NoticeBar(
@@ -59,8 +61,8 @@ class _DemoNoticeBar extends State<DemoNoticeBar> {
         NoticeBar(
           text: AppLocalizations.of(context)!.example_notice_bar,
           leftIcon: Icons.info_outline,
-          background: Color(0xffecf9ff),
-          color: Color(0xff1989fa),
+          background: const Color(0xffecf9ff),
+          color: const Color(0xff1989fa),
         )
       ],
     );

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/badge.dart';
-import 'package:vant_flutter/widgets/button.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/badge.dart';
+import 'package:vant_widget/widgets/button.dart';
 
 class GoodsAction extends StatefulWidget {
   final List<ActionButtonItem>? actions;
   final List<ButtonItem>? buttons;
 
-  GoodsAction({Key? key, this.actions, this.buttons}) : super(key: key);
+  const GoodsAction({Key? key, this.actions, this.buttons}) : super(key: key);
 
   @override
   _GoodsAction createState() => _GoodsAction();
 }
 
 class _GoodsAction extends State<GoodsAction> {
-  GlobalKey _buttonsKey = GlobalKey();
+  final GlobalKey _buttonsKey = GlobalKey();
   double? buttonWidth;
   late List<ActionButtonItem> _actions;
   late List<ButtonItem> _buttons;
@@ -23,7 +23,7 @@ class _GoodsAction extends State<GoodsAction> {
   void initState() {
     _actions = widget.actions ?? [];
     _buttons = widget.buttons ?? [];
-    WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
     super.initState();
   }
 
@@ -49,10 +49,10 @@ class _GoodsAction extends State<GoodsAction> {
             borderRadius: _buttons.length == 1
                 ? BorderRadius.circular(Style.borderRadiusMax)
                 : i == 0
-                    ? BorderRadius.horizontal(
+                    ? const BorderRadius.horizontal(
                         left: Radius.circular(Style.borderRadiusMax))
                     : i == _buttons.length - 1
-                        ? BorderRadius.horizontal(
+                        ? const BorderRadius.horizontal(
                             right: Radius.circular(Style.borderRadiusMax))
                         : null,
             text: button.loading
@@ -60,10 +60,10 @@ class _GoodsAction extends State<GoodsAction> {
                 : button.customText as String? ?? button.text,
             disabled: button.disabled,
             loading: button.loading,
-            color: button.color ?? null,
+            color: button.color,
             height: Style.goodsActionButtonHeight,
             width: buttonWidth,
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             onClick: () {
               if (button.disabled) return;
               if (button.onClick != null) button.onClick!();
@@ -77,14 +77,14 @@ class _GoodsAction extends State<GoodsAction> {
   Widget buildActionButtonItem(i) {
     ActionButtonItem action = _actions[i];
     return DecoratedBox(
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: const BoxDecoration(color: Colors.white),
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
           onTap: () {
             if (action.onClick != null) action.onClick!();
           },
-          child: Container(
+          child: SizedBox(
             width: Style.goodsActionIconWidth,
             height: Style.goodsActionIconHeight,
             child: Column(
@@ -97,10 +97,10 @@ class _GoodsAction extends State<GoodsAction> {
                           size: Style.goodsActionIconSize,
                           color: Style.goodsActionIconColor),
                 ),
-                SizedBox(height: Style.intervalSm),
+                const SizedBox(height: Style.intervalSm),
                 action.customText ??
                     Text("${action.text}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: Style.goodsActionFontSize,
                             color: Style.goodsActionIconTextColor))
               ],
@@ -127,7 +127,7 @@ class _GoodsAction extends State<GoodsAction> {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        _actions.length > 0 ? buildAction() : Container(),
+        _actions.isNotEmpty ? buildAction() : Container(),
         Expanded(
           child: buildButtons(),
         )

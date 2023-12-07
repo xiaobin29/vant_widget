@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 // import 'package:multi_image_picker/multi_image_picker.dart';
 
 //照片墙
@@ -83,20 +83,20 @@ class _ImageWall extends State<ImageWall> {
       clipBehavior: Clip.none,
       children: <Widget>[
         ClipRRect(
+            borderRadius:
+                BorderRadius.circular(Style.imageWallItemBorderRadius),
             child: Image.network(
               images[index],
               fit: widget.imageFit,
               width: Style.imageWallItemSize,
               height: Style.imageWallItemSize,
-            ),
-            borderRadius:
-                BorderRadius.circular(Style.imageWallItemBorderRadius)),
+            )),
         Positioned(
           right: 0,
           top: 0,
           child: InkWell(
             borderRadius: BorderRadius.circular(Style.borderRadiusMax),
-            child: Icon(Icons.cancel,
+            child: const Icon(Icons.cancel,
                 color: Style.imageWallCloseButtonColor,
                 size: Style.imageWallCloseButtonFontSize),
             onTap: () {
@@ -124,7 +124,7 @@ class _ImageWall extends State<ImageWall> {
             color: Style.imageWallUploadBorderColor,
           ),
           borderRadius: BorderRadius.circular(Style.imageWallItemBorderRadius)),
-      child: Icon(Icons.add,
+      child: const Icon(Icons.add,
           color: Style.imageWallUploadColor, size: Style.imageWallUploadSize),
     );
 

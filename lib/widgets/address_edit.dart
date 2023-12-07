@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/cell_group.dart';
-import 'package:vant_flutter/widgets/field.dart';
-import 'package:vant_flutter/widgets/cell.dart';
-import 'package:vant_flutter/widgets/button.dart';
-import 'package:vant_flutter/widgets/dialog.dart';
-import 'package:vant_flutter/widgets/picker.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/cell_group.dart';
+import 'package:vant_widget/widgets/field.dart';
+import 'package:vant_widget/widgets/cell.dart';
+import 'package:vant_widget/widgets/button.dart';
+import 'package:vant_widget/widgets/dialog.dart';
+import 'package:vant_widget/widgets/picker.dart';
 
 class AddressEdit extends StatefulWidget {
   // 地区选择列占位提示文字
@@ -37,7 +37,7 @@ class AddressEdit extends StatefulWidget {
   // 取消删除地址时触发
   final Function(Map map)? onCancelDelete;
 
-  AddressEdit(
+  const AddressEdit(
       {Key? key,
       this.areaColumnsPlaceholder = "选择省 / 市 / 区",
       this.showPostal = true,
@@ -93,10 +93,12 @@ class _AddressEdit extends State<AddressEdit> {
     _addressInfo = widget.addressInfo ?? {};
     List areas = [];
     (_addressInfo ?? {}).forEach((key, value) {
-      if (["province", "city", "county"].contains(key) && value != null)
+      if (["province", "city", "county"].contains(key) && value != null) {
         areas.add(value);
-      if (["provinceId", "cityId", "countyId"].contains(key))
+      }
+      if (["provinceId", "cityId", "countyId"].contains(key)) {
         _cityId.add(value ?? 0);
+      }
       if (["name", "tel", "addressDetail", "postalCode"].contains(key) &&
           value != null) input[key].text = value;
     });
@@ -106,9 +108,9 @@ class _AddressEdit extends State<AddressEdit> {
 
   getContent() {
     Map<String, dynamic> map = {};
-    ["name", "tel", "addressDetail", "postalCode"].forEach((value) {
+    for (var value in ["name", "tel", "addressDetail", "postalCode"]) {
       map[value] = input[value].text;
-    });
+    }
     List areas = input['area'].text.split('/');
     map['province'] = areas[0] ?? "";
     map['provinceId'] = _cityId[0];
@@ -243,8 +245,9 @@ class _AddressEdit extends State<AddressEdit> {
                 if (widget.onDelete != null) widget.onDelete!(getContent());
               },
               onCancel: () {
-                if (widget.onCancelDelete != null)
+                if (widget.onCancelDelete != null) {
                   widget.onCancelDelete!(getContent());
+                }
               },
             );
           },
@@ -255,9 +258,9 @@ class _AddressEdit extends State<AddressEdit> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _children = widget.children ?? [];
+    List<Widget> children = widget.children ?? [];
     return Padding(
-      padding: EdgeInsets.all(Style.addressEditPadding),
+      padding: const EdgeInsets.all(Style.addressEditPadding),
       child: Column(
         children: <Widget>[
           CellGroup(
@@ -268,7 +271,7 @@ class _AddressEdit extends State<AddressEdit> {
               buildAreaField(),
               buildDetailField(),
               widget.showPostal ? buildPostalField() : Container(),
-              ..._children,
+              ...children,
             ],
           ),
           SizedBox(height: widget.showSetDefault ? Style.paddingMd : 0),
@@ -278,7 +281,7 @@ class _AddressEdit extends State<AddressEdit> {
             child: Column(
               children: <Widget>[
                 buildSaveButton(),
-                SizedBox(height: Style.addressEditButtonMarginBottom),
+                const SizedBox(height: Style.addressEditButtonMarginBottom),
                 widget.showDelete ? buildCancelButton() : Container(),
               ],
             ),

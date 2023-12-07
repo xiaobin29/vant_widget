@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Loading extends StatelessWidget {
   // 加载描述
@@ -42,7 +42,7 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: Colors.transparent),
+      decoration: const BoxDecoration(color: Colors.transparent),
       child: vertical
           ? Column(
               mainAxisSize: MainAxisSize.min,
@@ -50,7 +50,7 @@ class Loading extends StatelessWidget {
                 _buildLoading(),
                 text != null
                     ? Padding(
-                        padding: EdgeInsets.only(top: Style.intervalSm),
+                        padding: const EdgeInsets.only(top: Style.intervalSm),
                         child: Text("$text",
                             style: TextStyle(
                                 color: Style.loadingTextColor,
@@ -66,7 +66,7 @@ class Loading extends StatelessWidget {
                 _buildLoading(),
                 text != null
                     ? Padding(
-                        padding: EdgeInsets.only(left: Style.intervalXl),
+                        padding: const EdgeInsets.only(left: Style.intervalXl),
                         child: Text("$text",
                             style: TextStyle(
                                 color: Style.loadingTextColor,

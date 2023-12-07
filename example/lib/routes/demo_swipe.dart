@@ -1,8 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoSwipe extends StatefulWidget {
+  const DemoSwipe({super.key});
+
   @override
   _DemoSwipe createState() => _DemoSwipe();
 }
@@ -17,8 +19,8 @@ class _DemoSwipe extends State<DemoSwipe> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 40, 0, 10),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(20, 40, 0, 10),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -30,7 +32,7 @@ class _DemoSwipe extends State<DemoSwipe> {
               i % 2 == 0 ? Colors.lightBlue : Colors.lightBlue.withOpacity(.8),
           child: Center(
               child: Text(i.toString(),
-                  style: TextStyle(fontSize: 20, color: Colors.white)))));
+                  style: const TextStyle(fontSize: 20, color: Colors.white)))));
     }
     return widgets;
   }
@@ -39,7 +41,7 @@ class _DemoSwipe extends State<DemoSwipe> {
   Widget build(BuildContext context) {
     return ListView(children: <Widget>[
       title(AppLocalizations.of(context)!.basic_usage),
-      Container(
+      SizedBox(
           height: 220.0,
           child: Swipe(
             autoPlay: true,
@@ -51,7 +53,7 @@ class _DemoSwipe extends State<DemoSwipe> {
             ],
           )),
       title(AppLocalizations.of(context)!.listen_to_change_event),
-      Container(
+      SizedBox(
           height: 220.0,
           child: Swipe(
             autoPlay: true,
@@ -62,7 +64,7 @@ class _DemoSwipe extends State<DemoSwipe> {
             // },
           )),
       title(AppLocalizations.of(context)!.vertical_scroll),
-      Container(
+      SizedBox(
           height: 220.0,
           child: Swipe(
             autoPlay: true,
@@ -71,18 +73,18 @@ class _DemoSwipe extends State<DemoSwipe> {
             children: buildItem(4),
           )),
       title(AppLocalizations.of(context)!.custom_animation),
-      Container(
+      SizedBox(
           height: 220.0,
           child: Swipe(
             autoPlay: true,
             indicatorColor: Colors.redAccent,
             indicatorSize: 12.0,
-            interval: Duration(seconds: 5),
-            duration: Duration(seconds: 3),
+            interval: const Duration(seconds: 5),
+            duration: const Duration(seconds: 3),
             children: buildItem(4),
           )),
       title(AppLocalizations.of(context)!.set_slider_proportion),
-      Container(
+      SizedBox(
           height: 220.0,
           child: Swipe(
             autoPlay: true,
@@ -95,7 +97,7 @@ class _DemoSwipe extends State<DemoSwipe> {
             ],
           )),
       title(AppLocalizations.of(context)!.custom_indicator),
-      Container(
+      SizedBox(
           height: 220.0,
           child: Swipe(
             autoPlay: true,
@@ -112,10 +114,10 @@ class _DemoSwipe extends State<DemoSwipe> {
               child: Container(
                 // width: 20,
                 // height: 20,
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 color: Colors.black.withOpacity(.2),
                 child: Text("$current/4",
-                    style: TextStyle(fontSize: 12, color: Colors.white)),
+                    style: const TextStyle(fontSize: 12, color: Colors.white)),
               ),
             ),
           )),

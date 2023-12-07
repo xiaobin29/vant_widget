@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/cell.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/cell.dart';
 
 const Duration _kExpand = Style.animationDurationFast;
 
-// ignore = must_be_immutable
 class CollapseItem extends StatefulWidget {
   // 是否为展开状态
-  bool isExpanded;
+  final bool isExpanded;
   // 唯一标识符，默认为索引值
   final String? name;
   // 左侧图标
@@ -33,7 +32,7 @@ class CollapseItem extends StatefulWidget {
   // 面板展开后回调
   final Function(bool val)? onExpansionChanged;
 
-  CollapseItem({
+  const CollapseItem({
     Key? key,
     this.title,
     this.name,
@@ -65,14 +64,16 @@ class _CollapseItem extends State<CollapseItem>
   late Animation<double> _iconTurns;
   late Animation<double> _heightFactor;
 
+  bool _isExpanded = false;
+
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(duration: _kExpand, vsync: this);
     _heightFactor = _controller.drive(_easeInTween);
     _iconTurns = _controller.drive(_halfTween.chain(_easeInTween));
-    bool _isExpanded =
-        PageStorage.of(context)?.readState(context) ?? widget.isExpanded;
+    _isExpanded =
+        PageStorage.of(context).readState(context) ?? widget.isExpanded;
     if (_isExpanded) _controller.value = 1.0;
   }
 
@@ -85,30 +86,31 @@ class _CollapseItem extends State<CollapseItem>
   void _handleTap() {
     if (!widget.clickable) return;
     setState(() {
-      widget.isExpanded = !widget.isExpanded;
+      _isExpanded = !widget.isExpanded;
     });
-    if (widget.isExpanded) {
+    if (_isExpanded) {
       _controller.forward();
     } else {
       _controller.reverse().then<void>((void value) {
         if (!mounted) return;
       });
     }
-    PageStorage.of(context)?.writeState(context, widget.isExpanded);
-    if (widget.onExpansionChanged != null)
-      widget.onExpansionChanged!(widget.isExpanded);
+    PageStorage.of(context).writeState(context, _isExpanded);
+    if (widget.onExpansionChanged != null) {
+      widget.onExpansionChanged!(_isExpanded);
+    }
   }
 
   @override
   void didUpdateWidget(Widget oldWidget) {
-    if (widget.isExpanded) {
+    if (_isExpanded) {
       _controller.forward();
     } else {
       _controller.reverse().then<void>((void value) {
         if (!mounted) return;
       });
     }
-    PageStorage.of(context)?.writeState(context, widget.isExpanded);
+    PageStorage.of(context).writeState(context, _isExpanded);
     super.didUpdateWidget(oldWidget as CollapseItem);
   }
 
@@ -166,14 +168,14 @@ class _CollapseItem extends State<CollapseItem>
                 widget.child != null ? null : Style.collapseItemContentPadding,
             margin:
                 widget.child != null ? null : Style.collapseItemContentMargin,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               border: Border(
                   top: BorderSide(
                       width: Style.borderWidthBase, color: Style.borderColor)),
             ),
             child: widget.child ??
                 Text("${widget.content}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Style.collapseItemContentTextColor,
                       fontSize: Style.collapseItemContentFontSize,
                     )),

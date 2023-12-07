@@ -1,20 +1,22 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoPasswordInput extends StatefulWidget {
+  const DemoPasswordInput({super.key});
+
   @override
   _DemoPasswordInput createState() => _DemoPasswordInput();
 }
 
 class _DemoPasswordInput extends State<DemoPasswordInput> {
-  String _value = "123";
+  final String _value = "123";
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -36,7 +38,7 @@ class _DemoPasswordInput extends State<DemoPasswordInput> {
         PasswordInput(
             value: "1234", info: AppLocalizations.of(context)!.placeholder_code, length: 4),
         title(AppLocalizations.of(context)!.clear_text_display),
-        PasswordInput(
+        const PasswordInput(
           value: "12",
           mask: false,
         )

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Search extends StatefulWidget {
   // 搜索框形状
@@ -37,7 +37,7 @@ class Search extends StatefulWidget {
   // 点击取消按钮反馈
   final Function()? onCancel;
 
-  Search(
+  const Search(
       {Key? key,
       this.shape = "square",
       this.background,
@@ -63,16 +63,14 @@ class Search extends StatefulWidget {
 }
 
 class _Search extends State<Search> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   Widget buildInput() {
     return Row(
       children: <Widget>[
         Padding(
           padding: Style.searchLabelPadding,
-          child: widget.left != null
-              ? widget.left
-              : GestureDetector(
+          child: widget.left ?? GestureDetector(
                   child: Icon(widget.leftIcon,
                       size: Style.searchLabelFontSize,
                       color: Style.searchLeftIconColor),
@@ -90,9 +88,9 @@ class _Search extends State<Search> {
               enabled: !widget.disabled,
               decoration: InputDecoration(
                 isDense: true,
-                contentPadding: EdgeInsets.symmetric(vertical: 8),
+                contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 hintText: widget.placeholder,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: Style.searchInputPlaceholderColor,
                   fontSize: Style.searchInputFontSize,
                 ),
@@ -148,14 +146,12 @@ class _Search extends State<Search> {
             widget.showAction
                 ? Padding(
                     padding: Style.searchActionPadding,
-                    child: widget.right != null
-                        ? widget.right
-                        : GestureDetector(
+                    child: widget.right ?? GestureDetector(
                             onTap: () {
                               if (widget.onCancel != null) widget.onCancel!();
                             },
                             child: Text(widget.actionText,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: Style.searchActionFontSize,
                                     color: Style.searchActionTextColor)),
                           ),

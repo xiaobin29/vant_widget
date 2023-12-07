@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoCheckbox extends StatefulWidget {
+  const DemoCheckbox({super.key});
+
   @override
   _DemoCheckbox createState() => _DemoCheckbox();
 }
@@ -11,8 +13,8 @@ class DemoCheckbox extends StatefulWidget {
 class _DemoCheckbox extends State<DemoCheckbox> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -44,7 +46,7 @@ class _DemoCheckbox extends State<DemoCheckbox> {
         title(AppLocalizations.of(context)!.basic_usage),
         CheckboxGroup(
           list: list,
-          values: ["a"],
+          values: const ["a"],
           onChange: (list) {
             Utils.toast(list.toString());
           },
@@ -52,39 +54,39 @@ class _DemoCheckbox extends State<DemoCheckbox> {
         title(AppLocalizations.of(context)!.disabled_status),
         CheckboxGroup(
           list: list,
-          values: ["a"],
+          values: const ["a"],
           disabled: true,
         ),
         title(AppLocalizations.of(context)!.custom_shape),
         CheckboxGroup(
           list: list,
-          values: ["a"],
+          values: const ["a"],
           shape: "square",
         ),
         title(AppLocalizations.of(context)!.custom_color),
         CheckboxGroup(
           list: list,
-          values: ["a"],
+          values: const ["a"],
           checkedColor: Colors.green,
         ),
         title(AppLocalizations.of(context)!.checkbox_group),
         CheckboxGroup(
           list: list2,
-          values: ["a", "b"],
+          values: const ["a", "b"],
         ),
         title(AppLocalizations.of(context)!.max_count),
         CheckboxGroup(
           list: list3,
-          values: ["a"],
+          values: const ["a"],
           max: 2,
         ),
         title(AppLocalizations.of(context)!.cell_component),
         CheckboxGroup(
           list: list3,
-          values: ['a'],
+          values: const ['a'],
           inCellGroup: true,
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         )
       ],

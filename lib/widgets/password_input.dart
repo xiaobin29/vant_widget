@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/number_keyboard.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/number_keyboard.dart';
 
 class PasswordInput extends StatefulWidget {
   // 密码值
@@ -27,7 +27,7 @@ class PasswordInput extends StatefulWidget {
   // 密码值位数等于最大程度时触发
   final Function(String val)? onSubmitted;
 
-  PasswordInput(
+  const PasswordInput(
       {Key? key,
       this.value = "",
       this.length = 6,
@@ -50,7 +50,7 @@ class _PasswordInput extends State<PasswordInput> {
   @override
   void initState() {
     _value = widget.value;
-    _codeList = new List.filled(widget.length, '');
+    _codeList = List.filled(widget.length, '');
     List<String> origin = widget.value.split('');
     _codeList.setAll(0, origin);
     super.initState();
@@ -71,18 +71,18 @@ class _PasswordInput extends State<PasswordInput> {
               borderRadius: widget.length < 6
                   ? BorderRadius.circular(Style.passwordInputBorderRadius)
                   : p == 0
-                      ? BorderRadius.horizontal(
+                      ? const BorderRadius.horizontal(
                           left:
                               Radius.circular(Style.passwordInputBorderRadius))
                       : p == widget.length - 1
-                          ? BorderRadius.horizontal(
+                          ? const BorderRadius.horizontal(
                               right: Radius.circular(
                                   Style.passwordInputBorderRadius))
                           : null,
               border: (p == 0 || p == widget.length - 1)
                   ? Border.all(color: Style.borderColor)
                   : Border(
-                      top: BorderSide(
+                      top: const BorderSide(
                           color: Style.borderColor,
                           width: Style.borderWidthBase),
                       left: BorderSide(
@@ -93,7 +93,7 @@ class _PasswordInput extends State<PasswordInput> {
                           width: p < widget.length - 2 || widget.length < 6
                               ? Style.borderWidthBase
                               : 0),
-                      bottom: BorderSide(
+                      bottom: const BorderSide(
                           color: Style.borderColor,
                           width: Style.borderWidthBase),
                     ),
@@ -104,7 +104,7 @@ class _PasswordInput extends State<PasswordInput> {
                   : widget.mask
                       ? "●"
                       : _codeList[p],
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: Style.passwordInputFontSize,
                   color: Style.passwordInputColor))),
     );
@@ -133,7 +133,7 @@ class _PasswordInput extends State<PasswordInput> {
                 onChange: (val) {
                   List<String> newval = val.split('');
                   setState(() {
-                    _codeList = new List.filled(widget.length, '');
+                    _codeList = List.filled(widget.length, '');
                     _codeList.setAll(0, newval);
                     _value = val;
                   });
@@ -149,7 +149,7 @@ class _PasswordInput extends State<PasswordInput> {
         ),
         widget.info != null
             ? Text(widget.info!,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: Style.passwordInputInfoFontSize,
                     color: Style.passwordInputInfoColor))
             : Container()

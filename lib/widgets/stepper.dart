@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Steppers extends StatefulWidget {
   // 当前值
@@ -28,7 +28,7 @@ class Steppers extends StatefulWidget {
   // 当前值变化时触发的事件
   final Function(String val)? onChange;
 
-  Steppers(
+  const Steppers(
       {Key? key,
       this.value = 1,
       this.onChange,
@@ -64,7 +64,7 @@ class _Stepper extends State<Steppers> {
         widget.disabled;
     return DecoratedBox(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.horizontal(
+          borderRadius: const BorderRadius.horizontal(
             left: Radius.circular(Style.stepperBorderRadius),
           ),
           color: minusBtnDisabled
@@ -73,17 +73,8 @@ class _Stepper extends State<Steppers> {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          borderRadius: BorderRadius.horizontal(
+          borderRadius: const BorderRadius.horizontal(
             left: Radius.circular(Style.stepperBorderRadius),
-          ),
-          child: Container(
-            width: Style.stepperButtonWidth,
-            height: Style.stepperHeight,
-            child: Icon(Icons.remove,
-                size: widget.size,
-                color: minusBtnDisabled
-                    ? Style.stepperDisabledIconColor
-                    : Style.stepperButtonIconColor),
           ),
           onTap: minusBtnDisabled
               ? null
@@ -95,6 +86,15 @@ class _Stepper extends State<Steppers> {
                   });
                   widget.onChange!(val);
                 },
+          child: SizedBox(
+            width: Style.stepperButtonWidth,
+            height: Style.stepperHeight,
+            child: Icon(Icons.remove,
+                size: widget.size,
+                color: minusBtnDisabled
+                    ? Style.stepperDisabledIconColor
+                    : Style.stepperButtonIconColor),
+          ),
         ),
       ),
     );
@@ -107,7 +107,7 @@ class _Stepper extends State<Steppers> {
         widget.disabled;
     return DecoratedBox(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.horizontal(
+          borderRadius: const BorderRadius.horizontal(
             right: Radius.circular(Style.stepperBorderRadius),
           ),
           color: addBtnDisabled
@@ -118,17 +118,8 @@ class _Stepper extends State<Steppers> {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          borderRadius: BorderRadius.horizontal(
+          borderRadius: const BorderRadius.horizontal(
             right: Radius.circular(Style.stepperBorderRadius),
-          ),
-          child: Container(
-            width: Style.stepperButtonWidth,
-            height: Style.stepperHeight,
-            child: Icon(Icons.add,
-                size: widget.size,
-                color: addBtnDisabled
-                    ? Style.stepperDisabledIconColor
-                    : Style.stepperButtonIconColor),
           ),
           onTap: addBtnDisabled
               ? null
@@ -140,6 +131,15 @@ class _Stepper extends State<Steppers> {
                   });
                   widget.onChange!(val);
                 },
+          child: SizedBox(
+            width: Style.stepperButtonWidth,
+            height: Style.stepperHeight,
+            child: Icon(Icons.add,
+                size: widget.size,
+                color: addBtnDisabled
+                    ? Style.stepperDisabledIconColor
+                    : Style.stepperButtonIconColor),
+          ),
         ),
       ),
     );
@@ -149,13 +149,11 @@ class _Stepper extends State<Steppers> {
     final TextEditingController controller = TextEditingController(
         text: value.toStringAsFixed(widget.decimalLength));
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Style.paddingBase),
+      margin: const EdgeInsets.symmetric(horizontal: Style.paddingBase),
       color: widget.disabled
           ? Style.stepperInputDisabledBackgroundColor
           : Style.stepperBackgroundColor,
-      width: widget.inputWidth != null
-          ? widget.inputWidth
-          : Style.stepperInputWidth,
+      width: widget.inputWidth ?? Style.stepperInputWidth,
       height: Style.stepperHeight,
       child: Center(
         child: TextField(
@@ -168,7 +166,7 @@ class _Stepper extends State<Steppers> {
             FilteringTextInputFormatter.allow(
                 RegExp("[0-9${widget.decimalLength > 0 ? '.' : ''}]"))
           ],
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             isDense: true,
             contentPadding: EdgeInsets.all(0),
             border: InputBorder.none,

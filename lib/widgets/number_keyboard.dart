@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class NumberKeyboard {
   // 当前输入值
@@ -41,15 +41,15 @@ class NumberKeyboard {
       });
 
   show(BuildContext context) {
-    var _list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0];
+    var list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0];
     int length = value!.length;
-    List<String?> _codeList = [...value!.split("")];
+    List<String?> codeList = [...value!.split("")];
 
     Widget buildTitle() {
       return (title != null || closeButtomText != null)
           ? Container(
               padding: Style.numberKeyboardTitlePadding,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Style.numberKeyboardBackgroundColor,
                   border: Border(
                       bottom: BorderSide(
@@ -63,7 +63,7 @@ class NumberKeyboard {
                   title != null
                       ? Text(
                           title!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: Style.numberKeyboardTitleFontSize,
                             color: Style.numberKeyboardTitleTextColor,
                           ),
@@ -72,7 +72,7 @@ class NumberKeyboard {
                   closeButtomText != null
                       ? GestureDetector(
                           child: Text(closeButtomText!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: Style.numberKeyboardCloseFontSize,
                                   color: Style.numberKeyboardCloseColor)),
                           onTap: () {
@@ -90,8 +90,8 @@ class NumberKeyboard {
     GridView buildKeyBoard() {
       return GridView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             childAspectRatio: 2.5,
             mainAxisSpacing: Style.numberKeyboardNumSpacing,
@@ -107,41 +107,42 @@ class NumberKeyboard {
                 child: Center(
                   child: index == 11
                       ? Text(showDeleteKey ? deleteButtonText : "",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: Style.numberKeyboardDeleteFontSize))
                       : index == 9
                           ? Text(extraKey ?? "",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: Style.numberKeyboardDeleteFontSize))
-                          : Text(_list[index].toString(),
-                              style: TextStyle(
+                          : Text(list[index].toString(),
+                              style: const TextStyle(
                                   fontSize: Style.numberKeyboardKeyFontSize)),
                 ),
                 onTap: () {
                   if (index == 9 && extraKey == null ||
                       index == 9 &&
                           extraKey != null &&
-                          _codeList.contains(extraKey) ||
+                          codeList.contains(extraKey) ||
                       (index == 11 && !showDeleteKey)) return;
                   if (index == 11 && showDeleteKey) {
                     if (length == 0) return;
-                    _codeList.removeLast();
+                    codeList.removeLast();
                     length--;
                   } else {
-                    if (maxlength != null && _codeList.length == maxlength)
+                    if (maxlength != null && codeList.length == maxlength) {
                       return;
-                    _codeList.add(index == 9 && extraKey != null
+                    }
+                    codeList.add(index == 9 && extraKey != null
                         ? extraKey
-                        : _list[index].toString());
+                        : list[index].toString());
                     length++;
                   }
                   String code = "";
-                  for (int i = 0; i < _codeList.length; i++) {
-                    code = code + _codeList[i].toString();
+                  for (int i = 0; i < codeList.length; i++) {
+                    code = code + codeList[i].toString();
                   }
                   if (onChange != null) onChange!(code);
                   if (maxlength != null &&
-                      _codeList.length == maxlength &&
+                      codeList.length == maxlength &&
                       onSubmitted != null) {
                     onSubmitted!(code);
                   }
@@ -156,7 +157,7 @@ class NumberKeyboard {
         backgroundColor: Style.numberKeyboardKeyBackground,
         builder: (BuildContext context) {
           return Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 border: Border(
                     top: BorderSide(
                         width: Style.borderWidthBase,

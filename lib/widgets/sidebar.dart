@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/badge.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/badge.dart';
 
 class Sidebar extends StatefulWidget {
   // 当前选项
@@ -10,7 +10,7 @@ class Sidebar extends StatefulWidget {
   // 当前值改变时触发
   final Function(int val)? onChange;
 
-  Sidebar({Key? key, this.active = 0, required this.list, this.onChange})
+  const Sidebar({Key? key, this.active = 0, required this.list, this.onChange})
       : super(key: key);
 
   @override

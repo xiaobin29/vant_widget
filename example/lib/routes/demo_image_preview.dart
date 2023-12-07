@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoImagePreview extends StatefulWidget {
+  const DemoImagePreview({super.key});
+
   @override
   _DemoImagePreview createState() => _DemoImagePreview();
 }
@@ -18,8 +20,8 @@ class _DemoImagePreview extends State<DemoImagePreview> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -53,7 +55,7 @@ class _DemoImagePreview extends State<DemoImagePreview> {
                       images: images,
                       showIndicators: true,
                       startPosition: 2,
-                      swipeDuration: Duration(seconds: 2),
+                      swipeDuration: const Duration(seconds: 2),
                       onChange: (val) {
                         Utils.toast("Page Changed $val");
                       });

@@ -1,6 +1,9 @@
-name: vant_flutter
+name: vant_widget
 description: "A vant-style flutter UI library.You can use this library to quickly build your application."
+
 version: 0.0.1
+homepage: https://github.com/xiaobin29/vant_widget
+publish_to: https://pub.dev/
 
 environment:
   sdk: '>=3.2.0 <4.0.0'

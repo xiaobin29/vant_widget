@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:vant_flutter/widgets/cell.dart';
-import 'package:vant_flutter/widgets/cell_group.dart';
+import 'package:vant_widget/widgets/cell.dart';
+import 'package:vant_widget/widgets/cell_group.dart';
 
 import 'routes/index.dart';
 
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     PageCell(
                       AppLocalizations.of(context)!.base_button_title,
-                          (ctx) => DemoButton(),
+                          (ctx) => const DemoButton(),
                       padding: false,
                     ),
                     PageCell(
@@ -118,57 +118,57 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     PageCell(
                       AppLocalizations.of(context)!.form_calendar_title,
-                          (ctx) => DemoCalendar(),
+                          (ctx) => const DemoCalendar(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_checkbox_title,
-                          (ctx) => DemoCheckbox(),
+                          (ctx) => const DemoCheckbox(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_field_title,
-                          (ctx) => DemoField(),
+                          (ctx) => const DemoField(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_number_keyboard_title,
-                          (ctx) => DemoNumberKeyboard(),
+                          (ctx) => const DemoNumberKeyboard(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_password_input_title,
-                          (ctx) => DemoPasswordInput(),
+                          (ctx) => const DemoPasswordInput(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_picker_title,
-                          (ctx) => DemoPicker(),
+                          (ctx) => const DemoPicker(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_radio_title,
-                          (ctx) => DemoRadio(),
+                          (ctx) => const DemoRadio(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_rate_title,
-                          (ctx) => DemoRate(),
+                          (ctx) => const DemoRate(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_search_title,
-                          (ctx) => DemoSearch(),
+                          (ctx) => const DemoSearch(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_stepper_title,
-                          (ctx) => DemoStepper(),
+                          (ctx) => const DemoStepper(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.form_image_wall_title,
-                          (ctx) => DemoImageWall(),
+                          (ctx) => const DemoImageWall(),
                       padding: false,
                     ),
                   ],
@@ -179,22 +179,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     PageCell(
                       AppLocalizations.of(context)!.action_action_sheet_title,
-                          (ctx) => DemoActionSheet(),
+                          (ctx) => const DemoActionSheet(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.action_dialog_title,
-                          (ctx) => DemoDialog(),
+                          (ctx) => const DemoDialog(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.action_loading_title,
-                          (ctx) => DemoLoading(),
+                          (ctx) => const DemoLoading(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.action_share_sheet_title,
-                          (ctx) => DemoShareSheet(),
+                          (ctx) => const DemoShareSheet(),
                       padding: false,
                     ),
                   ],
@@ -205,73 +205,73 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     PageCell(
                       AppLocalizations.of(context)!.display_badge_title,
-                          (ctx) => DemoBadge(),
+                          (ctx) => const DemoBadge(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_circle_title,
-                          (ctx) => DemoCircle(),
+                          (ctx) => const DemoCircle(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_collapse_title,
-                          (ctx) => DemoCollapse(),
+                          (ctx) => const DemoCollapse(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_divider_title,
-                          (ctx) => DemoDivider(),
+                          (ctx) => const DemoDivider(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_image_preview_title,
-                          (ctx) => DemoImagePreview(),
+                          (ctx) => const DemoImagePreview(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_list_title,
-                          (ctx) => DemoList(),
+                          (ctx) => const DemoList(),
                       padding: false,
                       withScaffold: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_notice_bar_title,
-                          (ctx) => DemoNoticeBar(),
+                          (ctx) => const DemoNoticeBar(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_panel_title,
-                          (ctx) => DemoPanel(),
+                          (ctx) => const DemoPanel(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_price_title,
-                          (ctx) => DemoPrice(),
+                          (ctx) => const DemoPrice(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_progress_title,
-                          (ctx) => DemoProgress(),
+                          (ctx) => const DemoProgress(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_skeleton_title,
-                          (ctx) => DemoSkeleton(),
+                          (ctx) => const DemoSkeleton(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_steps_title,
-                          (ctx) => DemoSteps(),
+                          (ctx) => const DemoSteps(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_swipe_title,
-                          (ctx) => DemoSwipe(),
+                          (ctx) => const DemoSwipe(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.display_tag_title,
-                          (ctx) => DemoTag(),
+                          (ctx) => const DemoTag(),
                       padding: true,
                     ),
                   ],
@@ -282,18 +282,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     PageCell(
                       AppLocalizations.of(context)!.navigation_pagination_title,
-                          (ctx) => DemoPagination(),
+                          (ctx) => const DemoPagination(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.navigation_sidebar_title,
-                          (ctx) => DemoSidebar(),
+                          (ctx) => const DemoSidebar(),
                       padding: true,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!
                           .navigation_tree_select_title,
-                          (ctx) => DemoTreeSelect(),
+                          (ctx) => const DemoTreeSelect(),
                       padding: false,
                     ),
                   ],
@@ -304,27 +304,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     PageCell(
                       AppLocalizations.of(context)!.business_address_edit_title,
-                          (ctx) => DemoAddressEdit(),
+                          (ctx) => const DemoAddressEdit(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.business_address_list_title,
-                          (ctx) => DemoAddressList(),
+                          (ctx) => const DemoAddressList(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.business_card_title,
-                          (ctx) => DemoCard(),
+                          (ctx) => const DemoCard(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.business_contact_card_title,
-                          (ctx) => DemoContactCard(),
+                          (ctx) => const DemoContactCard(),
                       padding: false,
                     ),
                     PageCell(
                       AppLocalizations.of(context)!.business_coupon_title,
-                          (ctx) => DemoCoupon(),
+                          (ctx) => const DemoCoupon(),
                       padding: false,
                     ),
                     PageCell(

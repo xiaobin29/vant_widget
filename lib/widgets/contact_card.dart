@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class ContactCard extends StatefulWidget {
   // 卡片类型，可选值为 edit
@@ -12,7 +12,7 @@ class ContactCard extends StatefulWidget {
   final bool editAble;
   // 点击时触发
   final Function()? onClick;
-  ContactCard(
+  const ContactCard(
       {Key? key,
       this.type = 'add',
       this.name,
@@ -20,6 +20,7 @@ class ContactCard extends StatefulWidget {
       this.editAble = true,
       this.onClick})
       : super(key: key);
+  @override
   _ContactCard createState() => _ContactCard();
 }
 
@@ -28,7 +29,7 @@ class _ContactCard extends State<ContactCard> {
     return Padding(
       padding: Style.contactCardLeftIconPadding,
       child: widget.type == 'edit'
-          ? Icon(Icons.person_outline,
+          ? const Icon(Icons.person_outline,
               color: Style.contactCardLeftIconColor,
               size: Style.contactCardLeftIconSize)
           : Container(
@@ -37,7 +38,7 @@ class _ContactCard extends State<ContactCard> {
                   borderRadius:
                       BorderRadius.circular(Style.couponBorderRadius)),
               padding: Style.contactCardAddPadding,
-              child: Icon(Icons.add,
+              child: const Icon(Icons.add,
                   color: Style.contactCardAddColor,
                   size: Style.contactCardAddSize),
             ),
@@ -74,7 +75,7 @@ class _ContactCard extends State<ContactCard> {
             children: [
               buildIcon(),
               widget.type == 'add'
-                  ? Text('添加联系人',
+                  ? const Text('添加联系人',
                       style: TextStyle(
                           fontSize: Style.contactCardFontSize,
                           color: Style.contactCardTextColor))
@@ -82,14 +83,14 @@ class _ContactCard extends State<ContactCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         widget.name != null
-                            ? Text('姓名：' + (widget.name as String),
-                                style: TextStyle(
+                            ? Text('姓名：${widget.name as String}',
+                                style: const TextStyle(
                                     fontSize: Style.contactCardFontSize,
                                     color: Style.contactCardTextColor))
                             : Container(),
                         widget.tel != null
-                            ? Text('电话：' + (widget.tel as String),
-                                style: TextStyle(
+                            ? Text('电话：${widget.tel as String}',
+                                style: const TextStyle(
                                     fontSize: Style.contactCardFontSize,
                                     color: Style.contactCardTextColor))
                             : Container()
@@ -98,7 +99,7 @@ class _ContactCard extends State<ContactCard> {
             ],
           ),
           widget.editAble
-              ? Icon(Icons.chevron_right,
+              ? const Icon(Icons.chevron_right,
                   color: Style.contactCardIconColor,
                   size: Style.contactCardIconSize)
               : Container()
@@ -107,9 +108,10 @@ class _ContactCard extends State<ContactCard> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: Style.contactCardBackgroundColor),
+      decoration: const BoxDecoration(color: Style.contactCardBackgroundColor),
       child: Column(
         children: [
           widget.editAble

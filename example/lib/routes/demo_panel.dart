@@ -1,8 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoPanel extends StatefulWidget {
+  const DemoPanel({super.key});
+
   @override
   _DemoPanel createState() => _DemoPanel();
 }
@@ -10,8 +12,8 @@ class DemoPanel extends StatefulWidget {
 class _DemoPanel extends State<DemoPanel> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -43,16 +45,16 @@ class _DemoPanel extends State<DemoPanel> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   NButton(
-                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
                     type: "danger",
                     size: "small",
                     width: 60,
                     text: AppLocalizations.of(context)!.confirm,
                     onClick: () => {},
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   NButton(
-                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
                     size: "small",
                     width: 60,
                     text: AppLocalizations.of(context)!.cancel,

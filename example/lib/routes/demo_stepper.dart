@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoStepper extends StatefulWidget {
+  const DemoStepper({super.key});
+
   @override
   _DemoStepper createState() => _DemoStepper();
 }
@@ -11,8 +13,8 @@ class DemoStepper extends StatefulWidget {
 class _DemoStepper extends State<DemoStepper> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 30, 0, 10),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(20, 30, 0, 10),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -54,7 +56,7 @@ class _DemoStepper extends State<DemoStepper> {
               ),
               Cell(
                 title: AppLocalizations.of(context)!.disabled_status,
-                customRight: Steppers(value: 1, disabled: true),
+                customRight: const Steppers(value: 1, disabled: true),
               ),
               Cell(
                 title: AppLocalizations.of(context)!.displayed_input_status,
@@ -85,7 +87,7 @@ class _DemoStepper extends State<DemoStepper> {
               )
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );

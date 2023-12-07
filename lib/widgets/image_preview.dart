@@ -1,44 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/swipe.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/swipe.dart';
 
 class ImagePreview extends StatefulWidget {
   // 需要预览的图片数组
   final List<Widget> images;
+
   // 图片预览起始位置索引
   final int? startPosition;
+
   // 是否显示页数
   final bool showIndex;
+
   // 是否显示轮播指示器
   final bool? showIndicators;
+
   // 动画时长
   final Duration? swipeDuration;
+
   // 是否显示关闭图标
   final bool closeable;
+
   // 关闭图标名称
   final IconData? closeIcon;
+
   // 关闭图标位置，可选值为top-left bottom-left bottom-right
   final String closeIconPosition;
+
   // 切换图片时的回调函数
   final Function(int val)? onChange;
+
   // 关闭时触发
   final Function(int index)? onClose;
 
-  ImagePreview(
-      {Key? key,
-      required this.images,
-      this.startPosition = 0,
-      this.showIndex = true,
-      this.showIndicators = false,
-      this.swipeDuration,
-      this.closeable = false,
-      this.closeIcon,
-      this.closeIconPosition = 'top-right',
-      this.onChange,
-      this.onClose});
+  const ImagePreview({
+    Key? key,
+    required this.images,
+    this.startPosition = 0,
+    this.showIndex = true,
+    this.showIndicators = false,
+    this.swipeDuration,
+    this.closeable = false,
+    this.closeIcon,
+    this.closeIconPosition = 'top-right',
+    this.onChange,
+    this.onClose,
+  });
 
   @override
-  _ImagePreview createState() => _ImagePreview();
+  State<ImagePreview> createState() => _ImagePreview();
 }
 
 class _ImagePreview extends State<ImagePreview> {
@@ -59,7 +69,7 @@ class _ImagePreview extends State<ImagePreview> {
         height: 20,
         alignment: AlignmentDirectional.center,
         child: Text("$_current/${widget.images.length}",
-            style: TextStyle(
+            style: const TextStyle(
                 height: 1.5,
                 fontSize: Style.imagePreviewIndexFontSize,
                 color: Style.imagePreviewIndexTextColor,
@@ -82,7 +92,7 @@ class _ImagePreview extends State<ImagePreview> {
           width: Style.imagePreviewCloseSize,
           height: Style.imagePreviewCloseSize,
           alignment: AlignmentDirectional.center,
-          margin: EdgeInsets.symmetric(horizontal: 16.0),
+          margin: const EdgeInsets.symmetric(horizontal: 16.0),
           child: GestureDetector(
             child: Icon(
               widget.closeIcon ?? Icons.cancel,
@@ -97,15 +107,15 @@ class _ImagePreview extends State<ImagePreview> {
         ));
   }
 
+  @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       Center(
-        child: Container(
+        child: SizedBox(
           height: Style.imagePreviewImageHeight,
           child: Swipe(
             initialSwipe: widget.startPosition,
             autoPlay: false,
-            children: widget.images,
             showIndicators: widget.showIndicators ?? true,
             duration: widget.swipeDuration ?? Style.imagePreviewDuration,
             onChange: (val) {
@@ -114,6 +124,7 @@ class _ImagePreview extends State<ImagePreview> {
               });
               if (widget.onChange != null) widget.onChange!(val);
             },
+            children: widget.images,
           ),
         ),
       ),

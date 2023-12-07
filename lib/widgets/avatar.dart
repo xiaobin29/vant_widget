@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Avatar extends StatelessWidget {
   // 头像类型
@@ -29,9 +29,9 @@ class Avatar extends StatelessWidget {
       this.custom,
       this.image,
       this.onClick})
-      : assert(["small", "normal", "large"].indexOf(type) > -1,
+      : assert(["small", "normal", "large"].contains(type),
             "type must be small, normal, or large"),
-        assert(["round", "square"].indexOf(shape) > -1,
+        assert(["round", "square"].contains(shape),
             "shape must be round, or square"),
         super(key: key);
 

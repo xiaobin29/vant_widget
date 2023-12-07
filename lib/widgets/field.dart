@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Field extends StatefulWidget {
   // 控制属性
@@ -99,7 +99,7 @@ class Field extends StatefulWidget {
   // 文本样式
   final TextStyle? style;
 
-  Field({
+  const Field({
     Key? key,
     this.keyboardType,
     this.focusNode,
@@ -161,13 +161,13 @@ class _Field extends State<Field> {
   }
 
   Widget buildLeft() {
-    return Container(
+    return SizedBox(
       width: widget.labelWidth,
       height: Style.fieldMinHeight,
       child: Row(
         children: <Widget>[
           widget.require
-              ? Text("*",
+              ? const Text("*",
                   style: TextStyle(
                     fontSize: Style.fieldFontSize,
                     color: Style.fieldRequiredColor,
@@ -180,14 +180,14 @@ class _Field extends State<Field> {
                 )
               : Container(),
           widget.leftIcon != null
-              ? SizedBox(width: Style.intervalSm)
+              ? const SizedBox(width: Style.intervalSm)
               : Container(),
           widget.label != null
               ? Flexible(
                   child: Text("${widget.label}",
                       textAlign: widget.labelAlign,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: Style.fieldFontSize)))
+                      style: const TextStyle(fontSize: Style.fieldFontSize)))
               : Container()
         ],
       ),
@@ -229,7 +229,7 @@ class _Field extends State<Field> {
               counterText: widget.type != "textarea" ? "" : null,
               border: InputBorder.none,
               errorText: widget.errorMessage,
-              errorStyle: TextStyle(
+              errorStyle: const TextStyle(
                   fontSize: Style.fieldErrorMessageTextSize,
                   color: Style.fieldRequiredColor),
             ),
@@ -251,12 +251,12 @@ class _Field extends State<Field> {
   }
 
   Widget buildRight() {
-    return Container(
+    return SizedBox(
       height: Style.fieldMinHeight,
       child: Row(
         children: <Widget>[
           widget.type == "password"
-              ? SizedBox(width: Style.intervalMd)
+              ? const SizedBox(width: Style.intervalMd)
               : Container(),
           widget.type == "password"
               ? GestureDetector(
@@ -272,11 +272,11 @@ class _Field extends State<Field> {
                 )
               : Container(),
           widget.clearable && _isShowDelete
-              ? SizedBox(width: Style.intervalMd)
+              ? const SizedBox(width: Style.intervalMd)
               : Container(),
           widget.clearable && _isShowDelete
               ? GestureDetector(
-                  child: Icon(Icons.cancel,
+                  child: const Icon(Icons.cancel,
                       size: Style.fieldClearIconSize,
                       color: Style.fieldClearIconColor),
                   onTap: () {
@@ -286,7 +286,7 @@ class _Field extends State<Field> {
                 )
               : Container(),
           (widget.rightIcon != null || widget.right != null)
-              ? SizedBox(width: Style.intervalMd)
+              ? const SizedBox(width: Style.intervalMd)
               : Container(),
           (widget.rightIcon != null && widget.right == null)
               ? GestureDetector(

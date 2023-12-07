@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/main.dart';
+import 'package:vant_widget/theme/style.dart';
 
 import 'loading.dart';
 
@@ -58,7 +58,7 @@ class Picker extends StatefulWidget {
 class _Picker extends State<Picker> {
   late List<FixedExtentScrollController> scrollControllers;
 
-  List _columns = [];
+  final List _columns = [];
   List<String?> _selectValues = [];
   dynamic _selectIndex = [];
   bool isMultiple = false;
@@ -98,7 +98,7 @@ class _Picker extends State<Picker> {
     if (baseLevel < level && list != null) {
       return getFloatArr(list[index!].child, level, baseLevel: baseLevel + 1);
     } else {
-      return list != null ? list : [PickerItem("-")];
+      return list ?? [PickerItem("-")];
     }
   }
 
@@ -123,8 +123,8 @@ class _Picker extends State<Picker> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           buildCancelButton(context),
-          Text("${widget.title ?? ''}",
-              style: TextStyle(fontSize: Style.pickerTitleFontSize)),
+          Text(widget.title ?? '',
+              style: const TextStyle(fontSize: Style.pickerTitleFontSize)),
           buildConfirmButton(context),
         ],
       ),
@@ -136,14 +136,15 @@ class _Picker extends State<Picker> {
       type: MaterialType.transparency,
       child: InkWell(
         onTap: () {
-          if (widget.onConfirm != null)
+          if (widget.onConfirm != null) {
             widget.onConfirm!(_selectValues, _selectIndex);
+          }
         },
         child: Container(
           padding: Style.pickerActionPadding,
           alignment: AlignmentDirectional.center,
-          child: Text("${widget.confirmButtonText}",
-              style: TextStyle(
+          child: Text(widget.confirmButtonText,
+              style: const TextStyle(
                   fontSize: Style.pickerActionFontSize,
                   color: Style.pickerActionTextColor)),
         ),
@@ -156,14 +157,15 @@ class _Picker extends State<Picker> {
       type: MaterialType.transparency,
       child: InkWell(
         onTap: () {
-          if (widget.onCancel != null)
+          if (widget.onCancel != null) {
             widget.onCancel!(_selectValues, _selectIndex);
+          }
         },
         child: Container(
           padding: Style.pickerActionPadding,
           alignment: AlignmentDirectional.center,
-          child: Text("${widget.cancelButtonText}",
-              style: TextStyle(
+          child: Text(widget.cancelButtonText,
+              style: const TextStyle(
                   fontSize: Style.pickerActionFontSize,
                   color: Style.pickerActionTextColor)),
         ),
@@ -178,8 +180,8 @@ class _Picker extends State<Picker> {
       widgets.add(Container(
         height: widget.itemHeight,
         alignment: AlignmentDirectional.center,
-        child: Text('${item.text}',
-            style: TextStyle(
+        child: Text(item.text,
+            style: const TextStyle(
                 fontSize: Style.pickerOptionFontSize,
                 color: Style.pickerOptionTextColor)),
       ));
@@ -213,8 +215,9 @@ class _Picker extends State<Picker> {
               _selectValues[i] = column[index].text;
             }
           });
-          if (widget.onChange != null)
+          if (widget.onChange != null) {
             widget.onChange!(_selectValues, _selectIndex);
+          }
         },
         // 滚筒的曲率,就是弯曲的程度
         useMagnifier: false,
@@ -233,7 +236,7 @@ class _Picker extends State<Picker> {
       bottom: 0,
       child: Container(
         color: Style.pickerLoadingMaskColor,
-        child: Center(
+        child: const Center(
           child: Loading(
             color: Style.pickerLoadingIconColor,
           ),
@@ -244,7 +247,7 @@ class _Picker extends State<Picker> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: Style.pickerHeight,
         child: Stack(
           children: <Widget>[

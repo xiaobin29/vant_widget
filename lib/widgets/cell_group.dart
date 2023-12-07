@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/divider.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/divider.dart';
 
 class CellGroup extends StatelessWidget {
   // 分组标题
@@ -12,7 +12,7 @@ class CellGroup extends StatelessWidget {
   // 默认插槽
   final List<Widget>? children;
 
-  CellGroup(
+  const CellGroup(
       {Key? key, this.title, this.children, this.border = true, this.decoration})
       : super(key: key);
 
@@ -20,11 +20,12 @@ class CellGroup extends StatelessWidget {
     List<Widget> widgets = [];
     for (int i = 0; i < list.length; i++) {
       widgets.add(list[i]);
-      if (i < list.length - 1)
+      if (i < list.length - 1) {
         widgets.add(Container(
-          margin: EdgeInsets.symmetric(horizontal: Style.cellHorizontalPadding),
-          child: NDivider(),
+          margin: const EdgeInsets.symmetric(horizontal: Style.cellHorizontalPadding),
+          child: const NDivider(),
         ));
+      }
     }
     return widgets;
   }
@@ -38,7 +39,7 @@ class CellGroup extends StatelessWidget {
             ? Padding(
                 padding: Style.cellGroupTitlePadding,
                 child: Text(title!,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: Style.cellGroupTitleFontSize,
                         color: Colors.grey)),
               )
@@ -47,7 +48,7 @@ class CellGroup extends StatelessWidget {
           decoration: decoration ??
               BoxDecoration(
                   border: border
-                      ? Border(
+                      ? const Border(
                           top: BorderSide(
                               width: Style.borderWidthBase,
                               color: Style.cellBorderColor),

@@ -1,4 +1,4 @@
-library vant_flutter;
+library vant_widget;
 
 export 'widgets/action_sheet.dart';
 export 'widgets/address_edit.dart';

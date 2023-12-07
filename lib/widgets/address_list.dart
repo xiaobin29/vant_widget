@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/tag.dart';
-import 'package:vant_flutter/widgets/button.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/tag.dart';
+import 'package:vant_widget/widgets/button.dart';
 
 class AddressList extends StatefulWidget {
   // 当前选中地址的 id
@@ -29,7 +29,7 @@ class AddressList extends StatefulWidget {
   // 在列表下方插入内容
   final Widget? children;
 
-  AddressList(
+  const AddressList(
       {Key? key,
       this.id,
       this.list,
@@ -77,8 +77,8 @@ class _AddressList extends State<AddressList> {
           Expanded(
             child: Padding(
               padding: disabled
-                  ? EdgeInsets.only(right: Style.paddingSm)
-                  : EdgeInsets.symmetric(horizontal: Style.paddingSm),
+                  ? const EdgeInsets.only(right: Style.paddingSm)
+                  : const EdgeInsets.symmetric(horizontal: Style.paddingSm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -91,17 +91,17 @@ class _AddressList extends State<AddressList> {
                                   ? Style.addressListItemDisabledTextColor
                                   : Style.addressListItemTextColor)),
                       item.isDefault! && !disabled
-                          ? SizedBox(width: Style.intervalMd)
+                          ? const SizedBox(width: Style.intervalMd)
                           : Container(),
                       item.isDefault! && !disabled
                           ? Tag(
-                              text: "${widget.defaultTagText}",
+                              text: widget.defaultTagText,
                               round: true,
                               type: "danger")
                           : Container()
                     ],
                   ),
-                  SizedBox(height: Style.intervalSm),
+                  const SizedBox(height: Style.intervalSm),
                   Text(
                       "${item.province}${item.city}${item.county}${item.addressDetail}",
                       style: TextStyle(
@@ -122,7 +122,7 @@ class _AddressList extends State<AddressList> {
                 disabled ? Style.transparent : Theme.of(context).hoverColor,
             splashColor:
                 disabled ? Style.transparent : Theme.of(context).splashColor,
-            icon: Icon(Icons.create,
+            icon: const Icon(Icons.create,
                 color: Style.addressListEditIconColor,
                 size: Style.addressListEditIconSize),
             onPressed: () {
@@ -170,7 +170,7 @@ class _AddressList extends State<AddressList> {
           ),
         ),
       );
-      if (i < list.length - 1) widgets.add(SizedBox(height: Style.paddingMd));
+      if (i < list.length - 1) widgets.add(const SizedBox(height: Style.paddingMd));
     }
     return widgets;
   }
@@ -203,7 +203,7 @@ class _AddressList extends State<AddressList> {
                 ? Padding(
                     padding: Style.addressListDisabledTextPadding,
                     child: Text(widget.disabledText,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: Style.addressListDisabledTextFontSize,
                             color: Style.addressListDisabledTextColor)),
                   )

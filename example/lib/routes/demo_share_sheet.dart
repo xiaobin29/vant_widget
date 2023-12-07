@@ -1,10 +1,12 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 import '../utils/index.dart';
 
 class DemoShareSheet extends StatefulWidget {
+  const DemoShareSheet({super.key});
+
   @override
   _DemoShareSheet createState() => _DemoShareSheet();
 }
@@ -12,8 +14,8 @@ class DemoShareSheet extends StatefulWidget {
 class _DemoShareSheet extends State<DemoShareSheet> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -49,19 +51,19 @@ class _DemoShareSheet extends State<DemoShareSheet> {
                           'https://img01.yzcdn.cn/vant/share-sheet-qq.png')),
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.copy_link,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.link,
                     ),
                   ),
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.share_paper,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.image,
                     ),
                   ),
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.qrcode,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.qr_code,
                     ),
                   ),
@@ -98,19 +100,19 @@ class _DemoShareSheet extends State<DemoShareSheet> {
                           'https://img01.yzcdn.cn/vant/share-sheet-qq.png')),
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.copy_link,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.link,
                     ),
                   ),
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.share_paper,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.image,
                     ),
                   ),
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.qrcode,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.qr_code,
                     ),
                   ),
@@ -161,13 +163,13 @@ class _DemoShareSheet extends State<DemoShareSheet> {
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.share_paper,
                     description: AppLocalizations.of(context)!.description,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.image,
                     ),
                   ),
                   ShareSheetItem(
                     name: AppLocalizations.of(context)!.qrcode,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.qr_code,
                     ),
                   ),

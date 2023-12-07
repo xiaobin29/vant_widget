@@ -1,21 +1,23 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoTreeSelect extends StatefulWidget {
+  const DemoTreeSelect({super.key});
+
   @override
   _DemoTreeSelect createState() => _DemoTreeSelect();
 }
 
 class _DemoTreeSelect extends State<DemoTreeSelect> {
-  String _info = "NEW";
-  int _index = 0;
+  final String _info = "NEW";
+  final int _index = 0;
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 30, 0, 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(20, 30, 0, 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -44,13 +46,13 @@ class _DemoTreeSelect extends State<DemoTreeSelect> {
       SideBarItem(
           title: AppLocalizations.of(context)!.group1,
           content: Container(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Image.network("https://img.yzcdn.cn/vant/cat.jpeg"),
           )),
       SideBarItem(
           title: AppLocalizations.of(context)!.group2,
           content: Container(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Image.network("https://img.yzcdn.cn/vant/apple-1.jpg"),
           )),
     ];
@@ -77,18 +79,18 @@ class _DemoTreeSelect extends State<DemoTreeSelect> {
       ),
     ];
     return SingleChildScrollView(
-        padding: EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(0.0),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               title(AppLocalizations.of(context)!.basic_usage),
               TreeSelect(
-                activeId: [1],
+                activeId: const [1],
                 list: list1,
               ),
               title(AppLocalizations.of(context)!.multi_mode),
               TreeSelect(
-                activeId: [1],
+                activeId: const [1],
                 list: list1,
                 max: 3,
                 onChange: (list) {
@@ -104,10 +106,10 @@ class _DemoTreeSelect extends State<DemoTreeSelect> {
               TreeSelect(
                 mainActiveIndex: _index,
                 list: list3,
-                activeId: [1],
+                activeId: const [1],
                 height: 220,
               ),
-              SizedBox(height: 20)
+              const SizedBox(height: 20)
             ]));
   }
 }

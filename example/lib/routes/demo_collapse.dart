@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoCollapse extends StatefulWidget {
+  const DemoCollapse({super.key});
+
   @override
   _DemoCollapse createState() => _DemoCollapse();
 }
@@ -11,8 +13,8 @@ class DemoCollapse extends StatefulWidget {
 class _DemoCollapse extends State<DemoCollapse> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -47,7 +49,7 @@ class _DemoCollapse extends State<DemoCollapse> {
         title(AppLocalizations.of(context)!.accordion),
         Collapse(
           accordion: true,
-          name: ['0'],
+          name: const ['0'],
           list: [
             CollapseItem(
               title: AppLocalizations.of(context)!.title,
@@ -69,15 +71,15 @@ class _DemoCollapse extends State<DemoCollapse> {
           list: [
             CollapseItem(
               title: AppLocalizations.of(context)!.title,
-              customTitle: Padding(
+              customTitle: const Padding(
                 padding: EdgeInsets.only(left: 6),
                 child: Icon(Icons.info_outline,
                     color: Colors.blueAccent, size: 16),
               ),
               name: 'a',
               rightIcon:
-                  Icon(Icons.favorite, size: 16, color: Colors.blueAccent),
-              child: Padding(
+                  const Icon(Icons.favorite, size: 16, color: Colors.blueAccent),
+              child: const Padding(
                 padding: EdgeInsets.all(12),
                 child: Text("AppLocalizations.of(context)!.example_content",
                     style: TextStyle(color: Colors.red, fontSize: 12)),
@@ -89,7 +91,7 @@ class _DemoCollapse extends State<DemoCollapse> {
               value: AppLocalizations.of(context)!.content,
               icon: Icons.store,
               child: Padding(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: Image.network("https://img.yzcdn.cn/vant/apple-1.jpg"),
               ),
             ),

@@ -12,7 +12,7 @@ class _DemoImage extends State<DemoImage> {
   Widget title(String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -20,8 +20,8 @@ class _DemoImage extends State<DemoImage> {
     return Column(
       children: <Widget>[
         child,
-        SizedBox(height: 10),
-        Text(text, style: TextStyle(color: Colors.grey))
+        const SizedBox(height: 10),
+        Text(text, style: const TextStyle(color: Colors.grey))
       ],
     );
   }
@@ -64,7 +64,7 @@ class _DemoImage extends State<DemoImage> {
                   Image.network("https://img.yzcdn.cn/vant/cat.jpeg",
                       width: 100, height: 100, fit: BoxFit.scaleDown),
                   "scale-down"),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
             ]),
         title(AppLocalizations.of(context)!.image_with_loading),
         Wrap(

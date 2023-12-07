@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Pagination extends StatefulWidget {
   // 当前页码
@@ -26,7 +26,7 @@ class Pagination extends StatefulWidget {
   // 页码改变时触发
   final Function(int? page)? onChange;
 
-  Pagination({
+  const Pagination({
     Key? key,
     this.current = 1,
     this.totalItems = 0,
@@ -46,14 +46,14 @@ class _Pagination extends State<Pagination> {
   int? pagesLength;
   int? pageLength;
   List<int> pages = [];
-  GlobalKey _key = GlobalKey();
+  final GlobalKey _key = GlobalKey();
   double? _width;
   int? _current;
 
   @override
   void initState() {
     _current = widget.current;
-    WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
     super.initState();
   }
 
@@ -168,13 +168,13 @@ class _Pagination extends State<Pagination> {
                 ? Container(
                     alignment: Alignment.center,
                     child: Text("$_current/$pagesLength",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: Style.paginationFontSize,
                             color: Style.paginationDescColor)),
                   )
                 : Row(
                     children: List.generate(pageLength!, (i) {
-                      return Container(
+                      return SizedBox(
                         width: _width,
                         child: buildItem(i + 1),
                       );

@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
-import 'package:vant_flutter/widgets/button.dart';
+import 'package:vant_widget/main.dart';
+import 'package:vant_widget/widgets/button.dart';
 
 class DemoButton extends StatefulWidget {
+  const DemoButton({super.key});
+
   @override
   _DemoButton createState() => _DemoButton();
 }
@@ -21,15 +23,15 @@ class _DemoButton extends State<DemoButton> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -148,7 +150,7 @@ class _DemoButton extends State<DemoButton> {
                       _loading = true;
                     });
                     int count = 2;
-                    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+                    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
                       setState(() {
                         if (count < 1) {
                           _timer.cancel();
@@ -200,13 +202,13 @@ class _DemoButton extends State<DemoButton> {
               runSpacing: 12,
               children: <Widget>[
                 NButton(
-                  icon: Icon(Icons.star_border, color: Colors.white, size: 18),
+                  icon: const Icon(Icons.star_border, color: Colors.white, size: 18),
                   type: "primary",
                   onClick: () {},
                 ),
                 NButton(
                   text: AppLocalizations.of(context)!.button,
-                  icon: Icon(Icons.star_border, color: Colors.white, size: 18),
+                  icon: const Icon(Icons.star_border, color: Colors.white, size: 18),
                   type: "primary",
                   onClick: () {},
                 ),
@@ -278,7 +280,7 @@ class _DemoButton extends State<DemoButton> {
                 ),
                 NButton(
                   text: AppLocalizations.of(context)!.gradient_button,
-                  color: LinearGradient(
+                  color: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [Colors.greenAccent, Colors.redAccent]),
@@ -293,7 +295,7 @@ class _DemoButton extends State<DemoButton> {
                 ),
               ],
             ),
-            SizedBox(height: 20)
+            const SizedBox(height: 20)
           ],
         ));
   }

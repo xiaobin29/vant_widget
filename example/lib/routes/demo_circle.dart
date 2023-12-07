@@ -1,8 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoCircle extends StatefulWidget {
+  const DemoCircle({super.key});
+
   @override
   _DemoCircle createState() => _DemoCircle();
 }
@@ -12,8 +14,8 @@ class _DemoCircle extends State<DemoCircle> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -24,7 +26,7 @@ class _DemoCircle extends State<DemoCircle> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           title(AppLocalizations.of(context)!.basic_usage),
-          Progress(
+          const Progress(
               percentage: 30,
               type: "circular",
               showPivot: true,
@@ -41,7 +43,7 @@ class _DemoCircle extends State<DemoCircle> {
                   });
                 },
               ),
-              SizedBox(width: 6),
+              const SizedBox(width: 6),
               NButton(
                 text: AppLocalizations.of(context)!.reduce,
                 type: "danger",
@@ -72,7 +74,7 @@ class _DemoCircle extends State<DemoCircle> {
               circularSize: 150,
               color: Colors.purple,
               pivotText: AppLocalizations.of(context)!.custom_size),
-          SizedBox(
+          const SizedBox(
             height: 20,
           )
         ],

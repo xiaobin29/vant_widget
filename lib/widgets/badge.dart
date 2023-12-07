@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class NBadge extends StatefulWidget {
   // 角标内容
@@ -36,14 +36,15 @@ class NBadge extends StatefulWidget {
 }
 
 class _Badge extends State<NBadge> {
-  GlobalKey _badgeKey = GlobalKey();
+  final GlobalKey _badgeKey = GlobalKey();
   double _badgeTop = 0;
   double _badgeLeft = 0;
 
   @override
   void initState() {
-    if (widget.value != null || widget.content != null || widget.dot)
-      WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    if (widget.value != null || widget.content != null || widget.dot) {
+      WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
+    }
     super.initState();
   }
 
@@ -61,7 +62,7 @@ class _Badge extends State<NBadge> {
     var format = int.tryParse(val);
     if (format is int) {
       return widget.max != null && format > (widget.max as int)
-          ? (widget.max.toString() + '+')
+          ? ('${widget.max}+')
           : format.toString();
     } else {
       return val;
@@ -79,18 +80,16 @@ class _Badge extends State<NBadge> {
           key: _badgeKey,
           padding: (widget.value != null || widget.content != null)
               ? Style.badgeValuePadding
-              : EdgeInsets.all(Style.badgeDotPadding),
+              : const EdgeInsets.all(Style.badgeDotPadding),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Style.borderRadiusMax),
             color: widget.color,
           ),
-          child: widget.content != null
-              ? widget.content
-              : widget.value != null
+          child: widget.content ?? (widget.value != null
                   ? Text(formatValue(widget.value!),
                       style: TextStyle(
                           color: widget.textColor, fontSize: widget.textSize))
-                  : Container(),
+                  : Container()),
         ),
       ));
     }

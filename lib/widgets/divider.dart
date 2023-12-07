@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class NDivider extends StatefulWidget {
   // 分隔符文字
@@ -17,7 +17,7 @@ class NDivider extends StatefulWidget {
   // 自定义分隔符内容
   final Widget? child;
 
-  NDivider(
+  const NDivider(
       {Key? key,
       this.content,
       this.fontColor = Style.dividerTextColor,
@@ -33,13 +33,13 @@ class NDivider extends StatefulWidget {
 }
 
 class _NDivider extends State<NDivider> {
-  GlobalKey _textKey = GlobalKey();
-  GlobalKey _dividerKey = GlobalKey();
+  final GlobalKey _textKey = GlobalKey();
+  final GlobalKey _dividerKey = GlobalKey();
   double itemWidth = 0;
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.child != null || widget.content != null) _onLayoutDone(_);
     });
     super.initState();
@@ -81,9 +81,7 @@ class _NDivider extends State<NDivider> {
               ? Container(
                   key: _textKey,
                   padding: Style.dividerContentPadding,
-                  child: widget.child != null
-                      ? widget.child
-                      : Text(widget.content!,
+                  child: widget.child ?? Text(widget.content!,
                           style: TextStyle(
                               fontSize: widget.fontSize,
                               color: widget.fontColor)),

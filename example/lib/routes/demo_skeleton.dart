@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoSkeleton extends StatefulWidget {
+  const DemoSkeleton({super.key});
+
   @override
   _DemoSkeleton createState() => _DemoSkeleton();
 }
@@ -13,8 +15,8 @@ class _DemoSkeleton extends State<DemoSkeleton> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 30, 0, 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(0, 30, 0, 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -25,12 +27,12 @@ class _DemoSkeleton extends State<DemoSkeleton> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
           title(AppLocalizations.of(context)!.basic_usage),
-          Skeleton(
+          const Skeleton(
             row: 3,
             title: true,
           ),
           title(AppLocalizations.of(context)!.show_avatar),
-          Skeleton(
+          const Skeleton(
             row: 3,
             title: true,
             avatar: true,
@@ -45,7 +47,7 @@ class _DemoSkeleton extends State<DemoSkeleton> {
               });
             },
           ),
-          SizedBox(height: 6),
+          const SizedBox(height: 6),
           Skeleton(
             row: 3,
             title: true,
@@ -56,12 +58,12 @@ class _DemoSkeleton extends State<DemoSkeleton> {
               children: <Widget>[
                 Text(AppLocalizations.of(context)!.about_vant,
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                SizedBox(
+                        const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                const SizedBox(
                   height: 10,
                 ),
                 Text(AppLocalizations.of(context)!.example_skeletion,
-                    style: TextStyle(fontSize: 14, height: 1.5))
+                    style: const TextStyle(fontSize: 14, height: 1.5))
               ],
             ),
           )

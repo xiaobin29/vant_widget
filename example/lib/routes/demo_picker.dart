@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 import '../utils/index.dart';
 
 class DemoPicker extends StatefulWidget {
+  const DemoPicker({super.key});
+
   @override
   _DemoPicker createState() => _DemoPicker();
 }
@@ -15,8 +17,8 @@ class _DemoPicker extends State<DemoPicker> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -62,7 +64,7 @@ class _DemoPicker extends State<DemoPicker> {
                 Utils.toast(AppLocalizations.of(context)!.cancel);
               },
               onConfirm: (values, index) {
-                Utils.toast(AppLocalizations.of(context)!.tip_confirm + "$values, $index");
+                Utils.toast("${AppLocalizations.of(context)!.tip_confirm}$values, $index");
               }),
           title(AppLocalizations.of(context)!.use_with_popup),
           Cell(
@@ -95,14 +97,14 @@ class _DemoPicker extends State<DemoPicker> {
           Picker(
               colums: options1,
               level: 2,
-              defaultIndex: [0, 2],
+              defaultIndex: const [0, 2],
               showToolbar: true,
               title: AppLocalizations.of(context)!.title,
               onCancel: (values, index) {
                 Utils.toast(AppLocalizations.of(context)!.cancel);
               },
               onConfirm: (values, index) {
-                Utils.toast(AppLocalizations.of(context)!.tip_confirm + "$values, $index");
+                Utils.toast("${AppLocalizations.of(context)!.tip_confirm}$values, $index");
               }),
           title(AppLocalizations.of(context)!.loading_status),
           Picker(colums: options1, level: 2, showToolbar: true, loading: true),

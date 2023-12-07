@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Cell extends StatelessWidget {
   // 左侧标题
@@ -62,7 +62,7 @@ class Cell extends StatelessWidget {
     this.customRight,
   })  : assert(size == "normal" || size == "large",
             "size must be normal or large"),
-        assert(["left", "right", "up", "down"].indexOf(arrowDirection) > -1,
+        assert(["left", "right", "up", "down"].contains(arrowDirection),
             "arrowDirection must be left, right, up or down"),
         super(key: key);
 
@@ -105,7 +105,7 @@ class Cell extends StatelessWidget {
         icon != null
             ? Icon(icon, size: Style.cellIconSize, color: Style.cellTextColor)
             : Container(),
-        icon != null ? SizedBox(width: Style.intervalSm) : Container(),
+        icon != null ? const SizedBox(width: Style.intervalSm) : Container(),
         title != null
             ? Text(title!,
                 style: TextStyle(
@@ -159,7 +159,7 @@ class Cell extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             buildLeft(),
-            SizedBox(height: Style.intervalSm),
+            const SizedBox(height: Style.intervalSm),
             buildBottom()
           ],
         ),
@@ -172,7 +172,7 @@ class Cell extends StatelessWidget {
   Widget build(BuildContext context) {
     return ((clickable || isLink) && onClick != null)
         ? DecoratedBox(
-            decoration: BoxDecoration(color: Style.cellBackgroundColor),
+            decoration: const BoxDecoration(color: Style.cellBackgroundColor),
             child: Material(
               type: MaterialType.transparency,
               child: InkWell(

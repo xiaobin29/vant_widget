@@ -194,7 +194,7 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.1"
-  vant_flutter:
+  vant_widget:
     dependency: "direct dev"
     description:
       path: ".."

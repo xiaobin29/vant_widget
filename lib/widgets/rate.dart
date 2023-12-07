@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 //星级评分
 class Rate extends StatefulWidget {
@@ -27,7 +26,7 @@ class Rate extends StatefulWidget {
   // 当前分值变化时触发的事件
   final Function(String val)? onChange;
 
-  Rate({
+  const Rate({
     Key? key,
     this.count = 5,
     required this.value,
@@ -60,8 +59,8 @@ class _Rate extends State<Rate> {
   Widget build(BuildContext context) {
     return Container(
       child: Wrap(
-        children: _buildChildren(),
         spacing: widget.gutter,
+        children: _buildChildren(),
       ),
     );
   }
@@ -71,6 +70,16 @@ class _Rate extends State<Rate> {
     for (int i = 1; i <= widget.count; i++) {
       Widget item = Container(
         child: GestureDetector(
+            onTap: widget.readonly || widget.disabled
+                ? null
+                : () {
+                    setState(() {
+                      _starNum = i;
+                    });
+                    if (widget.onChange != null) {
+                      widget.onChange!(_starNum.toString());
+                    }
+                  },
             child: Icon(
               _starNum >= i ? widget.icon : widget.voidIcon,
               color: _starNum >= i
@@ -79,16 +88,7 @@ class _Rate extends State<Rate> {
                       : widget.color
                   : widget.voidColor,
               size: widget.size,
-            ),
-            onTap: widget.readonly || widget.disabled
-                ? null
-                : () {
-                    setState(() {
-                      _starNum = i;
-                    });
-                    if (widget.onChange != null)
-                      widget.onChange!(_starNum.toString());
-                  }),
+            )),
       );
       widgets.add(item);
     }

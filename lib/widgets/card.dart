@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/tag.dart';
-import 'package:vant_flutter/widgets/price.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/tag.dart';
+import 'package:vant_widget/widgets/price.dart';
 
 class NCard extends StatelessWidget {
   // 左侧图片
@@ -73,7 +73,7 @@ class NCard extends StatelessWidget {
             Container(
               width: Style.cardThumbSize,
               height: Style.cardThumbSize,
-              margin: EdgeInsets.only(right: Style.intervalMd),
+              margin: const EdgeInsets.only(right: Style.intervalMd),
               child: image,
             ),
         customTag ??
@@ -90,7 +90,7 @@ class NCard extends StatelessWidget {
 
   Widget buildContent() {
     return Expanded(
-      child: Container(
+      child: SizedBox(
         height: Style.cardThumbSize,
         child: Stack(
           children: <Widget>[
@@ -102,16 +102,16 @@ class NCard extends StatelessWidget {
               children: <Widget>[
                 customTitle ??
                     Text(title!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: Style.cardFontSize,
                             fontWeight: FontWeight.bold)),
                 customDesc ??
                     Text(desc!,
                         maxLines: 1,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: Style.cardFontSize,
                             color: Style.cardDescColor)),
-                SizedBox(height: Style.intervalSm),
+                const SizedBox(height: Style.intervalSm),
                 customTags ?? Container()
               ],
             ),
@@ -129,12 +129,12 @@ class NCard extends StatelessWidget {
                     textBaseline: TextBaseline.ideographic,
                     children: <Widget>[
                       customPrice ?? Price(value: price, currency: currency),
-                      SizedBox(width: Style.intervalSm),
+                      const SizedBox(width: Style.intervalSm),
                       customOriginPrice ??
                           (originPrice != null
                               ? Text(
                                   "$currency${originPrice!.toStringAsFixed(2)}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Style.cardOriginPriceColor,
                                       fontSize: Style.cardOriginPriceFontSize,
                                       decoration: TextDecoration.lineThrough))
@@ -143,7 +143,7 @@ class NCard extends StatelessWidget {
                   ),
                   customNum ??
                       Text("x$num",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: Style.cardFontSize,
                               color: Style.cardNumColor))
                 ],

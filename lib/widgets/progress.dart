@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Progress extends StatefulWidget {
   // 进度条类型
@@ -25,7 +25,7 @@ class Progress extends StatefulWidget {
   // 圆形进度条大小
   final double circularSize;
 
-  Progress({
+  const Progress({
     Key? key,
     this.type = "line",
     this.inactive = false,
@@ -45,15 +45,15 @@ class Progress extends StatefulWidget {
 }
 
 class _Progress extends State<Progress> with SingleTickerProviderStateMixin {
-  GlobalKey _pivotKey = GlobalKey();
-  GlobalKey _progressKey = GlobalKey();
+  final GlobalKey _pivotKey = GlobalKey();
+  final GlobalKey _progressKey = GlobalKey();
   double? pivotLeft = 0;
   double pivotTop = 0;
   double? pivotRight;
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
     super.initState();
   }
 
@@ -94,7 +94,7 @@ class _Progress extends State<Progress> with SingleTickerProviderStateMixin {
                 : widget.pivotColor ?? color,
             borderRadius: BorderRadius.circular(Style.borderRadiusMax)),
         child: Text(
-            widget.pivotText ?? (widget.percentage.toStringAsFixed(0) + "%"),
+            widget.pivotText ?? ("${widget.percentage.toStringAsFixed(0)}%"),
             style: TextStyle(
                 color: widget.type == "circular"
                     ? widget.pivotColor ?? Style.circleTextColor

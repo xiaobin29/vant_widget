@@ -2,9 +2,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoCalendar extends StatefulWidget {
+  const DemoCalendar({super.key});
+
   @override
   _DemoCalendar createState() => _DemoCalendar();
 }
@@ -20,8 +22,8 @@ class _DemoCalendar extends State<DemoCalendar> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -50,7 +52,7 @@ class _DemoCalendar extends State<DemoCalendar> {
                 isLink: true,
                 onClick: () => Calendar(
                   defaultDate: _selectedDate1,
-                  maxDate: DateTime.now().add(Duration(days: 40)),
+                  maxDate: DateTime.now().add(const Duration(days: 40)),
                   onConfirm: (date) {
                     setState(() {
                       _selectedDate1 = date;
@@ -182,7 +184,7 @@ class _DemoCalendar extends State<DemoCalendar> {
             minDate: DateFormat('yyyy-MM-dd').parse("2012-11-10"),
             maxDate: DateFormat('yyyy-MM-dd')
                 .parse("2012-11-10")
-                .add(Duration(days: 120)),
+                .add(const Duration(days: 120)),
             onSelect: (date) {
               Utils.toast(date.toString());
             },

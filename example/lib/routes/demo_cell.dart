@@ -1,7 +1,7 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoCell extends StatefulWidget {
   const DemoCell({super.key});
@@ -13,8 +13,8 @@ class DemoCell extends StatefulWidget {
 class _DemoCell extends State<DemoCell> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -103,7 +103,7 @@ class _DemoCell extends State<DemoCell> {
               customTitle: Row(
                 children: <Widget>[
                   Text(AppLocalizations.of(context)!.custom_title),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Tag(
                     text: AppLocalizations.of(context)!.tag,
                     color: Colors.blueAccent,
@@ -117,7 +117,7 @@ class _DemoCell extends State<DemoCell> {
                 title: AppLocalizations.of(context)!.cell_title,
                 icon: Icons.store,
                 customRight:
-                    Icon(Icons.search, color: Colors.blueAccent, size: 16))
+                    const Icon(Icons.search, color: Colors.blueAccent, size: 16))
           ]),
           title(AppLocalizations.of(context)!.row_center),
           CellGroup(children: <Widget>[

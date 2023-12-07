@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoCoupon extends StatefulWidget {
+  const DemoCoupon({super.key});
+
   @override
   _DemoCoupon createState() => _DemoCoupon();
 }
@@ -14,8 +16,8 @@ class _DemoCoupon extends State<DemoCoupon> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.all(20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.all(20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 

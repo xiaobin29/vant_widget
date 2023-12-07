@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/button.dart';
+import 'package:vant_widget/main.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/button.dart';
 
 class Calendar {
   // 选择类型
@@ -74,7 +74,7 @@ class Calendar {
 class CalendarState extends StatefulWidget {
   final Calendar calendar;
 
-  const CalendarState(this.calendar);
+  const CalendarState(this.calendar, {super.key});
 
   @override
   _CalendarState createState() => _CalendarState();
@@ -89,11 +89,11 @@ class _CalendarState extends State<CalendarState> {
   late DateTime _maxDate;
   DateTime? _startDate;
   DateTime? _endDate;
-  String _startString = "开始";
-  String _endString = "结束";
+  final String _startString = "开始";
+  final String _endString = "结束";
   int? _displayYear;
   int? _displayMonth;
-  ScrollController _scrollController = new ScrollController();
+  final ScrollController _scrollController = ScrollController();
   bool _isRange = false;
 
   @override
@@ -103,7 +103,7 @@ class _CalendarState extends State<CalendarState> {
     _isRange = _calendar.type == 'range';
     _defaultDate = _calendar.defaultDate ?? (_isRange ? [] : null);
     _minDate = _calendar.minDate ?? DateTime.now();
-    _maxDate = _calendar.maxDate ?? DateTime.now().add(Duration(days: 180));
+    _maxDate = _calendar.maxDate ?? DateTime.now().add(const Duration(days: 180));
     if (_isRange && _defaultDate.length > 0) {
       _startDate = DateTime(
           _defaultDate[0].year, _defaultDate[0].month, _defaultDate[0].day);
@@ -117,8 +117,8 @@ class _CalendarState extends State<CalendarState> {
     _displayMonth =
         _isRange ? (_startDate ?? _minDate)!.month : _currentDate.month;
 
-    _scrollController..addListener(_scrollListener);
-    WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    _scrollController.addListener(_scrollListener);
+    WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
   }
 
   void _scrollListener() {
@@ -168,7 +168,7 @@ class _CalendarState extends State<CalendarState> {
           alignment: AlignmentDirectional.center,
           height: Style.calendarTitleHeight,
           child: Text(_calendar.title,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: Style.calendarTitleFontSize,
                   color: Style.calendarFontColor,
                   fontWeight: FontWeight.bold)),
@@ -178,10 +178,10 @@ class _CalendarState extends State<CalendarState> {
                 right: 0,
                 top: 0,
                 child: Padding(
-                  padding: EdgeInsets.all(Style.actionSheetCloseIconPadding),
+                  padding: const EdgeInsets.all(Style.actionSheetCloseIconPadding),
                   child: GestureDetector(
                     onTap: () => close(context),
-                    child: Icon(Icons.clear,
+                    child: const Icon(Icons.clear,
                         color: Style.actionSheetCloseIconColor,
                         size: Style.actionSheetCloseIconSize),
                   ),
@@ -197,7 +197,7 @@ class _CalendarState extends State<CalendarState> {
       alignment: AlignmentDirectional.center,
       height: Style.calendarTitleHeight,
       child: Text("$year年$month月",
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: Style.calendarMonthTitleFontSize,
               color: Style.calendarFontColor,
               fontWeight: Style.fontWeightBold)),
@@ -205,14 +205,14 @@ class _CalendarState extends State<CalendarState> {
   }
 
   Widget buildWeekdays() {
-    return Container(
+    return SizedBox(
       height: Style.calendarWeekdaysHeight,
       child: Row(
         children: List.generate(weekdays.length, (i) {
           return Expanded(
             child: Center(
               child: Text(weekdays[i],
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: Style.calendarWeekdaysFontSize,
                       color: Style.calendarFontColor)),
             ),
@@ -230,7 +230,7 @@ class _CalendarState extends State<CalendarState> {
                   ? Style.calendarBorderRadius
                   : 0)),
           color: Style.calendarBackgroundColor,
-          boxShadow: [Style.calendarHeaderBoxShadow]),
+          boxShadow: const [Style.calendarHeaderBoxShadow]),
       child: Column(
         children: <Widget>[
           buildTitle(),
@@ -251,7 +251,7 @@ class _CalendarState extends State<CalendarState> {
               ),
             ),
           )
-        : Container(
+        : SizedBox(
             height: _calendar.height,
             child: SingleChildScrollView(
               controller: _scrollController,
@@ -300,7 +300,7 @@ class _CalendarState extends State<CalendarState> {
                   height: Style.calendarMonthMarkSize,
                   alignment: AlignmentDirectional.center,
                   child: Text("$currentMonth",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: Style.calendarMonthMarkFontSize,
                           fontWeight: Style.fontWeightBold,
                           color: Style.calendarMonthMarkColor)),
@@ -358,10 +358,10 @@ class _CalendarState extends State<CalendarState> {
     return DecoratedBox(
       decoration: BoxDecoration(
           borderRadius: isStart
-              ? BorderRadius.horizontal(
+              ? const BorderRadius.horizontal(
                   left: Radius.circular(Style.calendarDayBorderRadius))
               : isEnd
-                  ? BorderRadius.horizontal(
+                  ? const BorderRadius.horizontal(
                       right: Radius.circular(Style.calendarDayBorderRadius))
                   : BorderRadius.circular(
                       isCenter ? 0 : Style.calendarDayBorderRadius),
@@ -388,7 +388,7 @@ class _CalendarState extends State<CalendarState> {
           splashColor: isEmpty || isDisabled
               ? Style.transparent
               : Theme.of(context).splashColor,
-          child: Container(
+          child: SizedBox(
             width: dayItemWidth,
             height: _calendar.rowHeight,
             child: Stack(
@@ -413,7 +413,7 @@ class _CalendarState extends State<CalendarState> {
                   child: Container(
                     alignment: AlignmentDirectional.center,
                     child: Text(info,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: Style.calendarInfoFontSize,
                             color: Style.calendarRangeEdgeColor)),
                   ),

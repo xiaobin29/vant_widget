@@ -1,48 +1,59 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class NoticeBar extends StatefulWidget {
   // 文本颜色
   final Color color;
+
   // 滚动条背景
   final Color background;
+
   // 通知文本内容
   final String text;
+
   // 左侧图标
   final IconData? leftIcon;
+
   // 通知栏模式，可选值为 closeable、link
   final String? mode;
+
   // 是否在长度溢出时滚动播放
   final bool scrollable;
+
   // 是否开启文本换行，只在禁用滚动时生效
   final bool wrapable;
+
   // 关闭通知栏时触发
   final Function()? onClose;
+
   // 点击通知栏时触发
   final Function()? onClick;
+
   // 滚动速率
   final int speed;
+
   // 动画延迟时间 (s)
   final int delay;
 
-  NoticeBar(
-      {Key? key,
-      required this.text,
-      this.color = Style.noticeBarTextColor,
-      this.background = Style.noticeBarBackgroundColor,
-      this.leftIcon,
-      this.mode,
-      this.scrollable = true,
-      this.wrapable = false,
-      this.speed = 5,
-      this.delay = 100,
-      this.onClose,
-      this.onClick});
+  const NoticeBar({
+    Key? key,
+    required this.text,
+    this.color = Style.noticeBarTextColor,
+    this.background = Style.noticeBarBackgroundColor,
+    this.leftIcon,
+    this.mode,
+    this.scrollable = true,
+    this.wrapable = false,
+    this.speed = 5,
+    this.delay = 100,
+    this.onClose,
+    this.onClick,
+  });
 
   @override
-  _NoticeBar createState() => _NoticeBar();
+  State<NoticeBar> createState() => _NoticeBar();
 }
 
 class _NoticeBar extends State<NoticeBar> {
@@ -51,14 +62,15 @@ class _NoticeBar extends State<NoticeBar> {
   double? screenHeight;
   double position = 0.0;
   Timer? _timer;
-  GlobalKey _key = GlobalKey();
+  final GlobalKey _key = GlobalKey();
   bool showNotice = true;
 
   @override
   void initState() {
-    scrollController = new ScrollController();
-    if (widget.scrollable)
-      WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    scrollController = ScrollController();
+    if (widget.scrollable) {
+      WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
+    }
     super.initState();
   }
 
@@ -68,7 +80,7 @@ class _NoticeBar extends State<NoticeBar> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
 
-    _timer = Timer.periodic(new Duration(milliseconds: widget.delay), (timer) {
+    _timer = Timer.periodic(Duration(milliseconds: widget.delay), (timer) {
       double maxScrollExtent = scrollController!.position.maxScrollExtent;
       double pixels = scrollController!.position.pixels;
       if (pixels + widget.speed >= maxScrollExtent) {
@@ -80,8 +92,7 @@ class _NoticeBar extends State<NoticeBar> {
       }
       position += widget.speed;
       scrollController!.animateTo(position,
-          duration: new Duration(milliseconds: widget.delay),
-          curve: Curves.linear);
+          duration: Duration(milliseconds: widget.delay), curve: Curves.linear);
     });
   }
 
@@ -98,7 +109,7 @@ class _NoticeBar extends State<NoticeBar> {
               key: _key,
               scrollDirection: Axis.horizontal,
               controller: scrollController,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: <Widget>[
                 Center(
                   child: Text(
@@ -131,7 +142,7 @@ class _NoticeBar extends State<NoticeBar> {
   List<Widget> buildCloseButon() {
     return [
       (widget.mode == "closeable" || widget.mode == "link")
-          ? SizedBox(width: Style.intervalSm)
+          ? const SizedBox(width: Style.intervalSm)
           : Container(),
       (widget.mode == "closeable" || widget.mode == "link")
           ? GestureDetector(

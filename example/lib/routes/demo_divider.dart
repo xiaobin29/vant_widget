@@ -1,8 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoDivider extends StatefulWidget {
+  const DemoDivider({super.key});
+
   @override
   _DemoDivider createState() => _DemoDivider();
 }
@@ -10,8 +12,8 @@ class DemoDivider extends StatefulWidget {
 class _DemoDivider extends State<DemoDivider> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -22,7 +24,7 @@ class _DemoDivider extends State<DemoDivider> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           title(AppLocalizations.of(context)!.basic_usage),
-          NDivider(),
+          const NDivider(),
           title(AppLocalizations.of(context)!.display_text),
           NDivider(
             content: AppLocalizations.of(context)!.divider,
@@ -32,7 +34,7 @@ class _DemoDivider extends State<DemoDivider> {
             content: AppLocalizations.of(context)!.divider,
             contentPosition: 'left',
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           NDivider(
             content: AppLocalizations.of(context)!.divider,
             contentPosition: 'right',
@@ -47,19 +49,19 @@ class _DemoDivider extends State<DemoDivider> {
               lineColor: Colors.redAccent,
               fontColor: Colors.redAccent,
               content: AppLocalizations.of(context)!.no_more),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           NDivider(
               lineColor: Colors.orangeAccent,
               fontColor: Colors.orangeAccent,
               content: AppLocalizations.of(context)!.no_more),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           NDivider(
               lineColor: Colors.blueAccent,
               fontColor: Colors.blueAccent,
               content: AppLocalizations.of(context)!.no_more),
           title(AppLocalizations.of(context)!.custom_content),
-          NDivider(child: Icon(Icons.cancel, color: Colors.blueAccent)),
-          SizedBox(
+          const NDivider(child: Icon(Icons.cancel, color: Colors.blueAccent)),
+          const SizedBox(
             height: 20,
           )
         ],

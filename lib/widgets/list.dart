@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/main.dart';
+import 'package:vant_widget/theme/style.dart';
 
 // ignore = must_be_immutable
 class NList extends StatefulWidget {
@@ -32,7 +32,7 @@ class NList extends StatefulWidget {
 }
 
 class _NList extends State<NList> {
-  ScrollController _controller = ScrollController();
+  final ScrollController _controller = ScrollController();
   bool _loading = false;
   Timer? timer;
 
@@ -40,7 +40,7 @@ class _NList extends State<NList> {
   void initState() {
     super.initState();
     loadData();
-    _controller..addListener(_scrollListener);
+    _controller.addListener(_scrollListener);
   }
 
   void _scrollListener() {
@@ -48,7 +48,7 @@ class _NList extends State<NList> {
     double maxScroll = _controller.position.maxScrollExtent;
     if (offset + widget.offset > maxScroll &&
         (timer == null || !timer!.isActive)) {
-      timer = Timer(Duration(milliseconds: 100), () => loadData());
+      timer = Timer(const Duration(milliseconds: 100), () => loadData());
     }
     if (widget.finished) _controller.removeListener(_scrollListener);
   }
@@ -67,9 +67,10 @@ class _NList extends State<NList> {
   }
 
   void checkFullList() {
-    Future.delayed(Duration(milliseconds: 200), () {
-      if (_controller.position.maxScrollExtent == 0 && !widget.error)
+    Future.delayed(const Duration(milliseconds: 200), () {
+      if (_controller.position.maxScrollExtent == 0 && !widget.error) {
         loadData();
+      }
     });
   }
 
@@ -100,7 +101,7 @@ class _NList extends State<NList> {
             alignment: AlignmentDirectional.center,
             child: Text(
               "${widget.finishedText}",
-              style: TextStyle(
+              style: const TextStyle(
                 color: Style.listTextColor,
                 fontSize: Style.listTextFontSize,
               ),
@@ -120,7 +121,7 @@ class _NList extends State<NList> {
               alignment: AlignmentDirectional.center,
               child: Text(
                 "${widget.errorText}",
-                style: TextStyle(
+                style: const TextStyle(
                   color: Style.listTextColor,
                   fontSize: Style.listTextFontSize,
                 ),

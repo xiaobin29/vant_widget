@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/sidebar.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/sidebar.dart';
 
 class TreeSelect extends StatefulWidget {
   // 所有选项
@@ -16,7 +16,7 @@ class TreeSelect extends StatefulWidget {
   // 左侧选中值改变时触发
   final Function(List<int?>? list)? onChange;
 
-  TreeSelect(
+  const TreeSelect(
       {Key? key,
       required this.list,
       this.mainActiveIndex = 0,
@@ -27,7 +27,7 @@ class TreeSelect extends StatefulWidget {
       : super(key: key);
 
   @override
-  _TreeSelect createState() => _TreeSelect();
+  State<TreeSelect> createState() => _TreeSelect();
 }
 
 class _TreeSelect extends State<TreeSelect> {
@@ -53,7 +53,7 @@ class _TreeSelect extends State<TreeSelect> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("${item.text}",
+              Text(item.text,
                   style: TextStyle(
                       fontSize: Style.treeSelectFontSize,
                       fontWeight: _activeId!.contains(item.id)
@@ -79,7 +79,7 @@ class _TreeSelect extends State<TreeSelect> {
               _activeId!.remove(item.id);
             } else {
               if (_activeId!.length == widget.max && widget.max > 1) return;
-              if (_activeId!.length > 0 && widget.max == 1) {
+              if (_activeId!.isNotEmpty && widget.max == 1) {
                 _activeId!.removeLast();
               }
               _activeId!.add(item.id);
@@ -100,6 +100,8 @@ class _TreeSelect extends State<TreeSelect> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
+            height: widget.height,
+            color: Style.treeSelectNavBackgroundColor,
             child: Sidebar(
               active: _mainActiveIndex,
               list: widget.list,
@@ -108,16 +110,12 @@ class _TreeSelect extends State<TreeSelect> {
                   _mainActiveIndex = val;
                 });
               },
-            ),
-            height: widget.height,
-            color: Style.treeSelectNavBackgroundColor),
+            )),
         Expanded(
           child: Container(
             height: widget.height,
             color: Style.treeSelectContentBackgroundColor,
-            child: widget.list[_mainActiveIndex!].content != null
-                ? widget.list[_mainActiveIndex!].content
-                : SingleChildScrollView(
+            child: widget.list[_mainActiveIndex!].content ?? SingleChildScrollView(
                     child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[...buildItem()],

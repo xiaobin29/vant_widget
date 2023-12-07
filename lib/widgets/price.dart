@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Price extends StatelessWidget {
   // 价格
@@ -28,20 +28,21 @@ class Price extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String integer = value!.toInt().toString();
-    RegExp reg = new RegExp(r"(\d)((?:\d{3})+\b)");
-    if (thousands)
+    RegExp reg = RegExp(r"(\d)((?:\d{3})+\b)");
+    if (thousands) {
       while (reg.hasMatch(integer)) {
         integer = integer.replaceAllMapped(
             reg, (match) => "${match.group(1)},${match.group(2)}");
       }
+    }
     String decimalString = value!.toStringAsFixed(decimal).split('.')[1];
     return Row(
       textBaseline: TextBaseline.ideographic,
       crossAxisAlignment: CrossAxisAlignment.baseline,
       children: <Widget>[
-        Text("$currency",
+        Text(currency,
             style: TextStyle(fontSize: (size / 1.5).toDouble(), color: color)),
-        Text("$integer",
+        Text(integer,
             style: TextStyle(
                 fontSize: size,
                 color: color,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/button.dart';
-import 'package:vant_flutter/widgets/price.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/button.dart';
+import 'package:vant_widget/widgets/price.dart';
 
 class SubmitBar extends StatelessWidget {
   // 价格
@@ -67,7 +67,7 @@ class SubmitBar extends StatelessWidget {
               : Container(),
           SizedBox(width: tipIcon != null ? Style.intervalSm : 0),
           Text("$tip",
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: Style.submitBarTipFontSize,
                   color: Style.submitBarTipColor)),
           customTip ?? Container()
@@ -96,8 +96,8 @@ class SubmitBar extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
-                    Text("$label",
-                        style: TextStyle(
+                    Text(label,
+                        style: const TextStyle(
                             fontSize: Style.submitBarTextFontSize,
                             color: Style.submitBarTextColor)),
                     Price(
@@ -111,7 +111,7 @@ class SubmitBar extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: Style.paddingSm,
           ),
           NButton(

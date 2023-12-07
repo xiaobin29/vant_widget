@@ -1,51 +1,64 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Swipe extends StatefulWidget {
   //是否自动播放
   final bool autoPlay;
+
   // 自动轮播间隔
   final Duration? interval;
+
   // 动画时长
   final Duration? duration;
+
   // 初始位置索引值
   final int? initialSwipe;
+
   // 是否显示指示器
   final bool showIndicators;
+
   //指示器大小
   final double indicatorSize;
+
   // 指示器颜色
   final Color indicatorColor;
+
   // 滚动方向
   final String scrollDirection;
+
   // 动画效果，默认fastOutSlowIn
   final Curve curve;
+
   // 每一页轮播后触发
   final Function(int val)? onChange;
+
   // 每个页面在滚动方向占据的视窗比例，默认为 1
   final double viewportFraction;
+
   // 显示内容
   final List<Widget> children;
+
   // 自定义指示器
   final Widget? indicator;
   final int _length;
 
-  Swipe(
-      {required this.children,
-      this.interval,
-      this.autoPlay = false,
-      this.initialSwipe = 0,
-      this.indicatorSize = Style.swipeIndicatorSize,
-      this.curve = Curves.fastOutSlowIn,
-      this.duration,
-      this.showIndicators = true,
-      this.scrollDirection = 'horizontal',
-      this.viewportFraction = 1.0,
-      this.indicatorColor = Style.swipeIndicatorActiceBackgroundColor,
-      this.onChange,
-      this.indicator})
-      : _length = children.length,
+  const Swipe({
+    Key? key,
+    required this.children,
+    this.interval,
+    this.autoPlay = false,
+    this.initialSwipe = 0,
+    this.indicatorSize = Style.swipeIndicatorSize,
+    this.curve = Curves.fastOutSlowIn,
+    this.duration,
+    this.showIndicators = true,
+    this.scrollDirection = 'horizontal',
+    this.viewportFraction = 1.0,
+    this.indicatorColor = Style.swipeIndicatorActiceBackgroundColor,
+    this.onChange,
+    this.indicator,
+  })  : _length = children.length,
         assert(children.length > 0, 'children 数量必须大于零'),
         assert(viewportFraction > 0.0);
 
@@ -70,7 +83,7 @@ class _Swipe extends State<Swipe> with SingleTickerProviderStateMixin {
         initialPage: _currentPage, viewportFraction: widget.viewportFraction);
 
     if (widget.autoPlay) {
-      Duration interval = widget.interval ?? Duration(seconds: 3);
+      Duration interval = widget.interval ?? const Duration(seconds: 3);
       Duration duration = widget.duration ?? Style.swipeDuration;
       timer = Timer.periodic(interval, (Timer t) {
         int toPage = _currentPage = _currentPage + 1;
@@ -115,14 +128,12 @@ class _Swipe extends State<Swipe> with SingleTickerProviderStateMixin {
                       _currentPage = i;
                       _realCurrentPage = i % widget._length;
                     });
-                    if (widget.onChange != null)
+                    if (widget.onChange != null) {
                       widget.onChange!((i) % 100 % widget._length + 1);
+                    }
                   })),
           widget.showIndicators
-              ? (widget.indicator != null
-                      ? widget.indicator
-                      : _buildIndicators()) ??
-                  Container()
+              ? (widget.indicator ?? _buildIndicators()) ?? Container()
               : Container()
         ],
       ),
@@ -142,7 +153,7 @@ class _Swipe extends State<Swipe> with SingleTickerProviderStateMixin {
             : EdgeInsets.only(right: widget.indicatorSize),
         width: widget.indicatorSize,
         height: widget.indicatorSize,
-        decoration: ShapeDecoration(shape: StadiumBorder(), color: color),
+        decoration: ShapeDecoration(shape: const StadiumBorder(), color: color),
       ));
     }
     return Positioned(

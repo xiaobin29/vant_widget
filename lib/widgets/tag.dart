@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 class Tag extends StatefulWidget {
   // 大小
@@ -32,12 +32,11 @@ class Tag extends StatefulWidget {
     this.color,
     this.textColor,
     this.onClose,
-  })  : assert(["default", "medium", "large"].indexOf(size) > -1,
+  })  : assert(["default", "medium", "large"].contains(size),
             "size must be default, medium, or large"),
         assert(
             ["default", "primary", "success", "danger", "warning"]
-                    .indexOf(type) >
-                -1,
+                    .contains(type),
             "type must be default, primary, success, danger or warning"),
         super(key: key);
 
@@ -88,7 +87,7 @@ class _Tag extends State<Tag> {
           color: bageColor,
           border: Border.all(color: borderColor, width: Style.borderWidthBase),
           borderRadius: widget.mark
-              ? BorderRadius.horizontal(
+              ? const BorderRadius.horizontal(
                   left: Radius.circular(Style.tagBorderRadius),
                   right: Radius.circular(Style.tagRoundBorderRadius))
               : BorderRadius.circular(widget.round

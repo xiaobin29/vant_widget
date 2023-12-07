@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 ///自定义Dialog
 class NDialog extends StatefulWidget {
@@ -96,13 +96,13 @@ class _NDialog extends State<NDialog> {
     return DecoratedBox(
         decoration: BoxDecoration(
             color: widget.cancelButtonColor,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(Style.dialogBorderRadius))),
         child: Material(
             type: MaterialType.transparency,
             child: InkWell(
                 onTap: hideDialog,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(Style.dialogBorderRadius)),
                 child: Container(
                     height: Style.dialogButtonHeight,
@@ -119,9 +119,9 @@ class _NDialog extends State<NDialog> {
         decoration: BoxDecoration(
             color: widget.confirmButtonColor,
             borderRadius: widget.showCancelButton
-                ? BorderRadius.only(
+                ? const BorderRadius.only(
                     bottomRight: Radius.circular(Style.dialogBorderRadius))
-                : BorderRadius.only(
+                : const BorderRadius.only(
                     bottomLeft: Radius.circular(Style.dialogBorderRadius),
                     bottomRight: Radius.circular(Style.dialogBorderRadius))),
         child: Material(
@@ -141,9 +141,9 @@ class _NDialog extends State<NDialog> {
                   ? Style.transparent
                   : Theme.of(context).splashColor,
               borderRadius: widget.showCancelButton
-                  ? BorderRadius.only(
+                  ? const BorderRadius.only(
                       bottomRight: Radius.circular(Style.dialogBorderRadius))
-                  : BorderRadius.only(
+                  : const BorderRadius.only(
                       bottomLeft: Radius.circular(Style.dialogBorderRadius),
                       bottomRight: Radius.circular(Style.dialogBorderRadius)),
               child: Container(
@@ -174,16 +174,16 @@ class _NDialog extends State<NDialog> {
         child: Row(
       children: <Widget>[
         Expanded(
-            child: widget.showCancelButton ? buildCancelButton() : Text(''),
-            flex: widget.showCancelButton ? 1 : 0),
+            flex: widget.showCancelButton ? 1 : 0,
+            child: widget.showCancelButton ? buildCancelButton() : const Text('')),
         SizedBox(
             width: widget.showCancelButton ? Style.borderWidthBase : 0,
             height: Style.dialogButtonHeight,
             child: Container(color: Style.borderColor)),
         Expanded(
+            flex: widget.showConfirmButton ? 1 : 0,
             child:
-                widget.showConfirmButton ? buildConfirmButton() : Container(),
-            flex: widget.showConfirmButton ? 1 : 0),
+                widget.showConfirmButton ? buildConfirmButton() : Container()),
       ],
     ));
   }
@@ -193,7 +193,7 @@ class _NDialog extends State<NDialog> {
     final size = MediaQuery.of(context).size;
     final width = size.width;
 
-    Column _buildContent = Column(
+    Column buildContent = Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         widget.title != null
@@ -201,7 +201,7 @@ class _NDialog extends State<NDialog> {
                 padding: Style.dialogHeaderPadding,
                 alignment: widget.titleAlign,
                 child: Text(widget.title!,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: Style.dialogFontSize,
                         color: Style.dialogTextColor,
                         fontWeight: Style.dialogHeaderFontWeight)),
@@ -219,7 +219,7 @@ class _NDialog extends State<NDialog> {
                     Style.dialogMessagePadding),
                 child: Text(widget.message!,
                     textAlign: widget.messageAlign,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: Style.dialogMessageFontSize,
                         color: Style.dialogHasTitleMessageTextColor)),
               ),
@@ -251,7 +251,7 @@ class _NDialog extends State<NDialog> {
                       color: Style.dialogBackgroundColor,
                       borderRadius:
                           BorderRadius.circular(Style.dialogBorderRadius)),
-                  child: _buildContent,
+                  child: buildContent,
                 ),
               ),
             ),

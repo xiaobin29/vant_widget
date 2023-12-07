@@ -1,8 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoSteps extends StatefulWidget {
+  const DemoSteps({super.key});
+
   @override
   _DemoSteps createState() => _DemoSteps();
 }
@@ -12,8 +14,8 @@ class _DemoSteps extends State<DemoSteps> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 30, 0, 10),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(20, 30, 0, 10),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -31,7 +33,7 @@ class _DemoSteps extends State<DemoSteps> {
             StepItem(AppLocalizations.of(context)!.transaction_complete),
           ], active: _active),
           Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Wrap(
                 runSpacing: 10,
                 children: <Widget>[
@@ -46,7 +48,7 @@ class _DemoSteps extends State<DemoSteps> {
                       });
                     },
                   ),
-                  SizedBox(width: 6),
+                  const SizedBox(width: 6),
                   NButton(
                     text: AppLocalizations.of(context)!.next,
                     type: "primary",

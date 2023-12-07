@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
-import 'package:vant_flutter/widgets/cell.dart';
+import 'package:vant_widget/theme/style.dart';
+import 'package:vant_widget/widgets/cell.dart';
 
 class Panel extends StatelessWidget {
   // 标题
@@ -14,7 +14,7 @@ class Panel extends StatelessWidget {
   // 自定义 footer
   final Widget? footer;
 
-  Panel(
+  const Panel(
       {Key? key,
       required this.title,
       this.desc,
@@ -23,13 +23,14 @@ class Panel extends StatelessWidget {
       this.footer})
       : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
           Container(
             // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Style.panelBackgroundColor,
                 border: Border(
                   top: BorderSide(
@@ -45,18 +46,18 @@ class Panel extends StatelessWidget {
                   title: title,
                   label: desc ?? "",
                   customRight: Text(status ?? "",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: Style.panelHeaderValueFontSize,
                           color: Style.panelHeaderValueColor)),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: Style.panelContentPadding),
-                  padding: EdgeInsets.only(
+                  margin: const EdgeInsets.only(left: Style.panelContentPadding),
+                  padding: const EdgeInsets.only(
                       top: Style.panelContentPadding,
                       bottom: Style.panelContentPadding,
                       right: Style.panelContentPadding),
                   alignment: AlignmentDirectional.centerStart,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       border: Border(
                     top: BorderSide(
                         width: Style.borderWidthBase, color: Style.borderColor),
@@ -69,7 +70,7 @@ class Panel extends StatelessWidget {
           footer != null
               ? Container(
                   padding: Style.panelFooterPadding,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       border: Border(
                         bottom: BorderSide(

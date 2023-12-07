@@ -1,8 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoLoading extends StatefulWidget {
+  const DemoLoading({super.key});
+
   @override
   _DemoLoading createState() => _DemoLoading();
 }
@@ -10,8 +12,8 @@ class DemoLoading extends StatefulWidget {
 class _DemoLoading extends State<DemoLoading> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -22,9 +24,9 @@ class _DemoLoading extends State<DemoLoading> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           title(AppLocalizations.of(context)!.basic_usage),
-          Loading(),
+          const Loading(),
           title(AppLocalizations.of(context)!.custom_color),
-          Loading(
+          const Loading(
             color: Colors.blueAccent,
           ),
           title(AppLocalizations.of(context)!.load_text),
@@ -40,7 +42,7 @@ class _DemoLoading extends State<DemoLoading> {
             vertical: true,
           ),
           title(AppLocalizations.of(context)!.custom_loading),
-          Container(
+          SizedBox(
             width: 100,
             child: Loading(
               loading: Image.network(
@@ -62,7 +64,7 @@ class _DemoLoading extends State<DemoLoading> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4.0),
                             color: Colors.white),
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         child: Loading(
                           color: Colors.blueAccent,
                           text: AppLocalizations.of(context)!.loading,

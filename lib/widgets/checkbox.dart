@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/theme/style.dart';
+import 'package:vant_widget/theme/style.dart';
 
 // ignore: must_be_immutable
 class NCheckbox extends StatefulWidget {
@@ -24,7 +24,7 @@ class NCheckbox extends StatefulWidget {
       this.iconSize = Style.checkboxSize,
       this.checkedColor = Style.checkboxCheckedIconColor,
       this.onChange})
-      : assert(["round", "square"].indexOf(shape) > -1,
+      : assert(["round", "square"].contains(shape),
             "shape must be round, or square"),
         super(key: key);
 
@@ -73,7 +73,7 @@ class _NCheckbox extends State<NCheckbox> {
                   size: widget.iconSize / 1.25, color: iconColor),
             ),
             widget.text != null
-                ? SizedBox(width: Style.checkboxLabelMargin)
+                ? const SizedBox(width: Style.checkboxLabelMargin)
                 : Container(),
             widget.text != null
                 ? Text("${widget.text}",

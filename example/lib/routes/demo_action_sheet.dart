@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 import '../utils/index.dart';
 
 class DemoActionSheet extends StatefulWidget {
+  const DemoActionSheet({super.key});
+
   @override
   _DemoActionSheet createState() => _DemoActionSheet();
 }
@@ -12,8 +14,8 @@ class DemoActionSheet extends StatefulWidget {
 class _DemoActionSheet extends State<DemoActionSheet> {
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -93,9 +95,9 @@ class _DemoActionSheet extends State<DemoActionSheet> {
               ActionSheet(
                 child: Container(
                   height: 150,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   alignment: AlignmentDirectional.topStart,
-                  child: Text("data"),
+                  child: const Text("data"),
                 ),
                 title: AppLocalizations.of(context)!.title,
                 closeIcon: Icons.highlight_off,

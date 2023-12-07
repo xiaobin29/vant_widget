@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoDialog extends StatefulWidget {
+  const DemoDialog({super.key});
+
   @override
   _DemoDialog createState() => _DemoDialog();
 }
@@ -75,7 +77,7 @@ class _DemoDialog extends State<DemoDialog> {
           message: AppLocalizations.of(context)!.example_content,
           showCancelButton: true,
           beforeClose: () {
-            return Future.delayed(Duration(seconds: 1), () {
+            return Future.delayed(const Duration(seconds: 1), () {
               return true;
             });
           },
@@ -90,15 +92,15 @@ class _DemoDialog extends State<DemoDialog> {
       builder: (_) {
         return NDialog(
           title: AppLocalizations.of(context)!.title,
-          child: Container(
-            padding: EdgeInsets.all(24),
-            child: Image.network("https://img.yzcdn.cn/vant/apple-1.jpg"),
-          ),
           showCancelButton: true,
           beforeClose: () {
             return Future.delayed(
-                Duration(seconds: 1), () {} as FutureOr<bool> Function()?);
+                const Duration(seconds: 1), () {} as FutureOr<bool> Function()?);
           },
+          child: Container(
+            padding: const EdgeInsets.all(24),
+            child: Image.network("https://img.yzcdn.cn/vant/apple-1.jpg"),
+          ),
         );
       },
     );
@@ -106,8 +108,8 @@ class _DemoDialog extends State<DemoDialog> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 

@@ -1,9 +1,11 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../utils/index.dart';
-import 'package:vant_flutter/main.dart';
+import 'package:vant_widget/main.dart';
 
 class DemoField extends StatefulWidget {
+  const DemoField({super.key});
+
   @override
   _DemoField createState() => _DemoField();
 }
@@ -20,8 +22,8 @@ class _DemoField extends State<DemoField> {
 
   Widget title(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      child: Text(title, style: TextStyle(fontSize: 14, color: Colors.grey)),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
     );
   }
 
@@ -31,7 +33,7 @@ class _DemoField extends State<DemoField> {
 
   bool isErrorPhone(String text) {
     String patttern = r'(^([1][3,4,5,6,7,8,9])\d{9}$)';
-    return !(new RegExp(patttern).hasMatch(text));
+    return !(RegExp(patttern).hasMatch(text));
   }
 
   @override
@@ -153,7 +155,7 @@ class _DemoField extends State<DemoField> {
                   showWordLimit: true),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );
