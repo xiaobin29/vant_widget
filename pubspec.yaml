@@ -1,0 +1,19 @@
+name: vant_flutter
+description: "A vant-style flutter UI library.You can use this library to quickly build your application."
+version: 0.0.1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
